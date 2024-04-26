@@ -4,6 +4,8 @@ const cors = require("cors");
 const app = express();
 const bodyParser = require("body-parser");
 
+// * allow request from
+
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -11,11 +13,16 @@ app.use(
     credentials: true,
   })
 );
+
+// * connexion on 3001
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.listen(3001, () => {
   console.log("3001, ok");
 });
+
+// *connexion on db
+
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -23,6 +30,12 @@ const db = mysql.createConnection({
   database: "fil_rouge_farm3",
   multipleStatements: true,
 });
+
+// !-------------------------------------------------
+// !-------------------------------------------------
+// *------------electricity--------------------------
+// !-------------------------------------------------
+// !-------------------------------------------------
 
 app.get("/electricity", (req, res) => {
   const sql =
@@ -67,7 +80,11 @@ app.post("/getelecbymonth", (req, res) => {
   });
 });
 
-// !--------------------------------------------
+// !-------------------------------------------------
+// !-------------------------------------------------
+// *------------culture------------------------------
+// !-------------------------------------------------
+// !-------------------------------------------------
 
 app.get("/culture/pommedeterre", (req, res) => {
   const sql =
