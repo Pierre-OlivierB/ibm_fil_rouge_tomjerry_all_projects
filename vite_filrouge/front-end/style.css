@@ -1,0 +1,435 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --ymeal: hsl(45, 100%, 85%);
+  --gmeal: hsl(226, 50%, 85%);
+  --tmeal: hsl(220, 50%, 50%);
+  --wwrite: hsl(0, 15%, 95%);
+  --bwrite: hsl(0, 0%, 15%);
+  --wbtn: 90px;
+  --hbtn: 30px;
+  --fsize: 16px;
+  --wele: 80%;
+  --hart: 50vh;
+  --dark: hsl(240, 30%, 35%);
+  --light: hsl(240, 30%, 75%);
+  --ultra-light: hsl(240, 30%, 85%);
+  --darker-black: hsl(0, 0%, 30%);
+  --darker-b-trans: hsla(0, 0%, 30%, 0.8);
+  --lighter-white: hsl(0, 0%, 90%);
+  --salmon-bg: hsl(6, 93%, 71%);
+  --selandlabw: 140px;
+}
+body {
+  height: 100%;
+  background: linear-gradient(to top, var(--ymeal), var(--gmeal));
+  /* padding: 5px; */
+}
+.df {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.fdrr {
+  flex-direction: row-reverse;
+}
+.jcfe {
+  justify-content: flex-end;
+}
+button,
+.link {
+  background: var(--tmeal);
+  height: var(--hbtn);
+  width: var(--wbtn);
+  color: var(--wwrite);
+  border: 0;
+  border-radius: 5px;
+  font-size: var(--fsize);
+  font-weight: 700;
+  transition: all 0.4s ease;
+  box-shadow: 3px 3px 5px 2px var(--bwrite);
+}
+button:hover,
+.link:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  box-shadow: 1px 1px 5px 5px var(--bwrite);
+}
+.link {
+  color: var(--wwrite);
+}
+section {
+  font-size: var(--fsize);
+  width: var(--wele);
+}
+article {
+  /* max-height: var(--hart); */
+  /* margin-bottom: 20px;
+  margin-top: 20px; */
+  max-width: 100vw;
+}
+.section {
+  height: 100%;
+}
+.section_a {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+/* .blue {
+  background: blue;
+  width: 80%;
+} */
+nav,
+select,
+input,
+input::placeholder {
+  background: var(--tmeal);
+  height: var(--hbtn);
+  width: 180px;
+  color: var(--wwrite);
+  border: 0;
+  border-radius: 5px;
+  font-size: var(--fsize);
+  font-weight: 700;
+  transition: all 0.4s ease;
+  box-shadow: 3px 3px 5px 2px var(--bwrite);
+}
+select:hover,
+option:hover,
+input:hover {
+  cursor: pointer;
+}
+nav {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav ul {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+li {
+  list-style: none;
+}
+.cadre {
+  /* background: white; */
+  padding-bottom: 10px;
+}
+/* * Test part */
+.dfw {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.cadre {
+  padding-bottom: 10px;
+}
+.dfr {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+.label-select {
+  /* border: 1px solid; */
+  height: var(--hbtn);
+  /* width: 180px; */
+  text-align: center;
+  background-color: lightgray;
+  box-shadow: 0px 7px 10px 2px var(--bwrite);
+  margin-bottom: 5px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.label-select,
+select {
+  width: var(--selandlabw);
+}
+.mt10 {
+  margin-top: 10px;
+}
+/* nav {
+  width: 100%;
+} */
+.vhmax200 {
+  height: 200vh;
+}
+.vhmax180 {
+  height: 180vh;
+}
+.vhmax100 {
+  height: 100vh;
+}
+
+/* *test */
+article {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#chart_6 {
+  width: 100%;
+  height: 40%;
+}
+.test {
+  padding: 10px;
+}
+.cadrew {
+  width: 95%;
+}
+.pdt150 {
+  padding-top: 150px;
+}
+.pdt100 {
+  padding-top: 100px;
+}
+
+nav .dfr {
+  height: 50px;
+}
+
+.part20 {
+  height: 20%;
+}
+.part80 {
+  height: 80%;
+}
+.dfrw {
+  flex-wrap: wrap;
+}
+.dfrm {
+  flex-direction: column;
+}
+.dfarticle {
+  padding: 50px;
+  padding-top: 100px;
+}
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 50px;
+  width: 100%;
+  background: var(--ultra-light);
+  /* position: absolute;
+  bottom: 0; */
+}
+
+.choose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#textImg {
+  width: 100vw;
+  height: 50vh;
+  background: hsl(45, 100%, 85%);
+  position: relative;
+  z-index: 1;
+}
+#textImg p {
+  padding: 25px;
+  width: 100%;
+  height: 100%;
+}
+
+/* !------------------------------- */
+.container-card-modal {
+  /* height: 30%; */
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background: var(--light);
+}
+.content-card-modal {
+  background: var(--light);
+  width: 20%;
+  min-width: 80px;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 5px;
+  margin-left: 20px;
+  flex-direction: column;
+  /* overflow: scroll; */
+}
+#modalBtn {
+  border: 1px solid var(--dark);
+  position: fixed;
+  right: 50px;
+  top: 10px;
+  width: 300px;
+  height: 50px;
+  font-size: 2rem;
+}
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  left: 50px;
+  top: 25px;
+}
+#img_logo {
+  width: 50px;
+  height: 50px;
+}
+#imgHome {
+  width: 100%;
+}
+.img_homebg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 50vh;
+  background: linear-gradient(
+    to bottom,
+    hsla(226, 50%, 85%, 0.7),
+    hsla(45, 100%, 85%, 0.7)
+  );
+}
+.bg_img_home {
+  background: top/cover no-repeat url("../assets/img/farm.png");
+}
+
+/* !---------------------------- */
+/* The Modal (background) */
+.modal {
+  display: flex; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 10px; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: var(--darker-black); /* Fallback color */
+  background-color: var(--darker-b-trans); /* Black w/ opacity */
+  overflow: hidden;
+}
+.modal-display {
+  width: 100%;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  transform: translateX(-300px);
+  background-color: var(--ultra-light);
+  /* margin: 50% auto; 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid var(--darker-black);
+  width: 30%; /* Could be more or less, depending on screen size */
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  transition: all 1s ease;
+}
+.modal-content-display {
+  width: 30%;
+  min-width: 300px;
+  transform: translateX(1px);
+  transition: transform 1s ease;
+}
+
+/* The Close Button */
+.close {
+  color: var(--salmon-bg);
+  background-color: var(--tmeal);
+  box-shadow: 3px 3px 5px 2px var(--bwrite);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  transform: translate(-10px, 10px);
+  transition: transform 1s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--darker-black);
+  border-radius: 15px;
+}
+
+.close:hover,
+.close:focus {
+  background-color: var(--salmon-bg);
+  color: var(--lighter-white);
+  border-color: var(--lighter-white);
+  box-shadow: 1px 1px 5px 5px var(--bwrite);
+  text-decoration: none;
+  cursor: pointer;
+  transform: translate(-10px, 10px) scale(1.3);
+}
+.modal-content section {
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.modal-content section ul {
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#myModal div section ul {
+  width: 100%;
+}
+#myModal div section ul li {
+  /* background: black; */
+  /* border: 1px solid black; */
+  width: 50%;
+  height: 10%;
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: center;
+  text-align: center; */
+}
+#myModal div section ul li a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.h100 {
+  height: 100%;
+}
+/* !------------------------------- */
+/** reponsive */
+@media screen and (min-width: 700px) {
+  #textImg {
+    height: 40vh;
+  }
+  .img_homebg {
+    height: 60vh;
+  }
+}

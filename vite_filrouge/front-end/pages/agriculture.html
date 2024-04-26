@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test - Pie</title>
+    <link rel="stylesheet" href="../toastui-chart.min.css" />
+    <script src="../toastui-chart.min.js"></script>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body class="df jcfe vhmax100">
+    <!-- <nav>
+      <ul class="dfr">
+        <li><a href="http://localhost:5173/">Accueil</a></li>
+        <li><a href="http://localhost:5173/test.html">Recherche</a></li>
+        <li><a href="http://localhost:5173/test2.html">Test</a></li>
+        <li><a href="http://localhost:5173/test3.html">Tree</a></li>
+      </ul>
+    </nav> -->
+    <div style="width: 100%; height: 80%" class="df">
+      <!-- <article class="df">
+          <section class="df">
+            <button>Test</button>
+          </section>
+        </article> -->
+      <section class="df fdrr">
+        <aside style="width: 20vw; height: 80vh">
+          <form
+            class="dfr dfrw mt10 h100"
+            action=""
+            method="post"
+            id="form_chosen"
+          >
+            <div class="df">
+              <label class="label-select" for="diagramme">Diagramme</label>
+
+              <select name="diagramme" id="diagramme">
+                <option value="">Sélection :</option>
+                <option value="bar">Bar</option>
+                <option value="cam">Camembert</option>
+              </select>
+            </div>
+            <div class="df">
+              <label class="label-select" for="apport">Apport</label>
+
+              <select name="apport" id="apport">
+                <option value="">Sélection :</option>
+                <option value="with">indifférent</option>
+                <option value="out">sans</option>
+              </select>
+            </div>
+            <div class="df">
+              <label class="label-select" for="filtre">Filtre</label>
+
+              <select name="filtre" id="filtre">
+                <option value="">Sélection :</option>
+                <!-- <option value="culture">Culture</option> -->
+                <option value="cereales">Céréales</option>
+                <option value="pomme de terre">Pomme de terre</option>
+                <option value="betterave">Betterave sucrière</option>
+                <option value="tot sol">Total / Sol</option>
+                <option value="tot cult">Total / Culture</option>
+              </select>
+            </div>
+            <input type="submit" id="element_chosen" value="Choisir" />
+          </form>
+        </aside>
+        <article class="df test">
+          <div class="cadrew dfw">
+            <div
+              id="chart_pie"
+              class="transparent"
+              style="width: 80vw; height: 75vh"
+            ></div>
+            <!-- <div
+                id="chart_pie2"
+                class="transparent"
+                style="width: 85vw; height: 40vh"
+              ></div>
+              <div
+                id="chart_pie3"
+                class="transparent"
+                style="width: 85vw; height: 40vh"
+              ></div>
+              <div
+                id="chart_pie4"
+                class="transparent"
+                style="width: 85vw; height: 40vh"
+              ></div> -->
+          </div>
+        </article>
+      </section>
+    </div>
+    <div class="container-card-modal">
+      <section class="content-card-modal" id="popup">
+        <button id="modalBtn" title="une question ?">
+          <span>Informations ?</span>
+        </button>
+        <div id="logo">
+          <img src="../assets/img/logo.png" alt="logo" id="img_logo" />
+          <p>Al et Jerry</p>
+        </div>
+      </section>
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close" id="closeModal">&times;</span>
+
+          <section>
+            <!-- <h1>Que Cherchez-vous ?</h1> -->
+            <ul class="dfr dfrm">
+              <li>
+                <a href="http://localhost:5173/" class="link">Accueil</a>
+              </li>
+              <li>
+                <a
+                  href="http://localhost:5173/pages/agriculture.html"
+                  class="link"
+                  >Agriculture</a
+                >
+              </li>
+              <li>
+                <a
+                  href="http://localhost:5173/pages/electricity.html"
+                  class="link"
+                  >Electricty</a
+                >
+              </li>
+              <li>
+                <a href="http://localhost:5173/pages/test2.html" class="link"
+                  >horticulture</a
+                >
+              </li>
+              <li>
+                <a href="http://localhost:5173/pages/test3.html" class="link"
+                  >Tree</a
+                >
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>Crédit : Pierre-Olivier B., IBM Académie</p>
+    </footer>
+    <script src="../assets/content/test.js"></script>
+    <script src="../assets/content/modal.js"></script>
+  </body>
+</html>

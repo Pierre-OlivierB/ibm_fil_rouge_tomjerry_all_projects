@@ -1,0 +1,86 @@
+{
+    "data": {
+        "culture": {
+            "céréales": {
+                "sableux": 193,
+                "argileux": 694,
+                "limoneux": 104,
+                "argileux avec apport": 1605,
+                "sableux avec apport": 713,
+                "calcaire": 5,
+                "limoneux avec apport": 54,
+                "silicieux": 4,
+                "argilo tourbeuse": 11,
+                "humifère": 60,
+                "tourbeuse": 37
+            },
+            "Pomme de Terre": {
+                "sableux": 988,
+                "argileux": 860,
+                "limoneux": 143,
+                "argileux avec apport": 3152,
+                "sableux avec apport": 7545,
+                "calcaire": 59,
+                "limoneux avec apport": 1780,
+                "silicieux": 11,
+                "argilo tourbeuse": 287,
+                "humifère": 244,
+                "tourbeuse": 86
+            },
+            "Betteraves sucrières": {
+                "sableux": 425,
+                "argileux": 258,
+                "limoneux": 64,
+                "argileux avec apport": 2690,
+                "sableux avec apport": 7217,
+                "calcaire": 55,
+                "limoneux avec apport": 1324,
+                "silicieux": 0,
+                "argilo tourbeuse": 59,
+                "humifère": 5,
+                "tourbeuse": 3
+            }
+        }
+    },
+    "horticulture": {
+        "Légumes": {
+            "sableux": 193,
+            "argileux": 694,
+            "limoneux": 104,
+            "argileux avec apport": 1605,
+            "sableux avec apport": 713,
+            "calcaire": 5,
+            "limoneux avec apport": 54,
+            "silicieux": 4,
+            "argilo tourbeuse": 11,
+            "humifère": 60,
+            "tourbeuse": 37
+        },
+        "Fruits": {
+            "sableux": 988,
+            "argileux": 860,
+            "limoneux": 143,
+            "argileux avec apport": 3152,
+            "sableux avec apport": 7545,
+            "calcaire": 59,
+            "limoneux avec apport": 1780,
+            "silicieux": 11,
+            "argilo tourbeuse": 287,
+            "humifère": 244,
+            "tourbeuse": 86
+        },
+        "Fruits sous serre": {
+            "sableux": 425,
+            "argileux": 258,
+            "limoneux": 64,
+            "argileux avec apport": 2690,
+            "sableux avec apport": 7217,
+            "calcaire": 55,
+            "limoneux avec apport": 1324,
+            "silicieux": 0,
+            "argilo tourbeuse": 59,
+            "humifère": 5,
+            "tourbeuse": 3
+        }
+    }
+}

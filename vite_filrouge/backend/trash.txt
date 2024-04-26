@@ -1,0 +1,40 @@
+!-------------------------------------------------------
+!-------------------------------------------------------
+*------------------Culture------------------------------
+!-------------------------------------------------------
+!-------------------------------------------------------
+*est une culture
+
+SELECT DISTINCT c.`Id_culture`
+FROM `culture` as c,`cereal` as cer,`feed` as f,`oleaginous` as o,`under_earth` as ue 
+WHERE c.`Id_culture`=cer.id_cereal
+OR c.`Id_culture`=f.id_feed
+OR c.`Id_culture`=o.id_oleaginous
+OR c.`Id_culture`=ue.id_under_earth;
+
+*tous
+
+SELECT CONCAT(tf.name_field,' ',WITH_BONUS(f.Num_Field)) as name, cg.qtx_cult as data, f.num_field
+FROM field as f,type_field as tf,cult_give as cg, is_cult_affilied as ica, culture as c, cereal as cer
+WHERE f.id_type_field=tf.id_type_field
+AND f.num_field=ica.Num_Field
+AND ica.Id_culture=cer.Id_culture
+AND cg.Id_culture=cer.Id_culture
+AND c.Id_culture=cer.Id_culture
+AND ica.date_cult_affilied = cg.date_cult;
+
+*tous test :
+SELECT CONCAT(tf.name_field,' ',WITH_BONUS(f.Num_Field)) as name, cg.qtx_cult as data
+FROM field as f,type_field as tf,cult_give as cg, is_cult_affilied as ica, culture as c, cereal as cer
+WHERE f.id_type_field=tf.id_type_field
+AND f.num_field=ica.Num_Field
+AND ica.Id_culture=cer.Id_culture
+AND cg.Id_culture=cer.Id_culture
+AND c.Id_culture=cer.Id_culture
+AND ica.date_cult_affilied = cg.date_cult
+AND c.Id_culture IN (SELECT DISTINCT c.`Id_culture`
+FROM `culture` as c,`cereal` as cer,`feed` as f,`oleaginous` as o,`under_earth` as ue 
+WHERE c.`Id_culture`=cer.id_cereal
+OR c.`Id_culture`=f.id_feed
+OR c.`Id_culture`=o.id_oleaginous
+OR c.`Id_culture`=ue.id_under_earth);
