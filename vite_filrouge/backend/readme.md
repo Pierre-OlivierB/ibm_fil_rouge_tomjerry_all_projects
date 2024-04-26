@@ -1,17 +1,27 @@
--TO DO
+# Back-end
+
+## install project
+npm i
+
+## launch project
+npm run devStart
+
+## TO DO list :
+
+### TO DO
 *concat si d'autres terrain font du même produit 
 *transférer graphs culture sur l'horticulture
 *changer le avec en indifférencier
 
 
--DOING
+### DOING
 *tothorti
 *ajouter metrique t/he
 *barchart => verification des resultats suite aux selects
 *récupérer les surfaces (id_unit=5) des terrains des pomme de terre
 *faire la somme des terrain pour les pommes de terre
 
--DONE
+### DONE
 *ajout des set de terrains
 *add traitement to fields
 *add horticulture content
@@ -32,4 +42,3 @@
 *faire le select de la culture
 *faire le select de la céréales
 *faire le select de la betteraves sucrières
-
