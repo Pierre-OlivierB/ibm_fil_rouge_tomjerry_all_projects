@@ -13,15 +13,17 @@ npm run devStart
 ### TO DO
 
 - .env
-- mvc
 - try catch
-- secutité
+- securité
+- api adapté au mobile
+- api adapté au client lourd
 - group by si d'autres terrain font du même produit avec select mère
+- ajouter metrique t/he
+- barchart => verification des resultats suite aux selects
 
 ### DOING
 
-- ajouter metrique t/he
-- barchart => verification des resultats suite aux selects
+- mvc
 
 ### DONE
 
