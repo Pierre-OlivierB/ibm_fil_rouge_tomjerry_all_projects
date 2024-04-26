@@ -17,6 +17,7 @@ app.use(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// *redirect in routes
 app.use("/", lightRoutes);
 
 app.listen(3001, () => {

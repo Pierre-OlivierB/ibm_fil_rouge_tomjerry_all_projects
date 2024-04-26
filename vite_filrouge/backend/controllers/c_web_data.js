@@ -1,4 +1,5 @@
 const webdataModel = require("../models/m_web_data.js");
+// *redirect in models
 
 // *electricity
 const electricity = webdataModel.melectricity;

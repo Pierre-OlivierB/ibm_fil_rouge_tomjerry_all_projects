@@ -20,13 +20,13 @@ npm run devStart
 - group by si d'autres terrain font du même produit avec select mère
 - ajouter metrique t/he
 - barchart => verification des resultats suite aux selects
+- vérifier la donnée envoyé en post "/getelecbymonth"
 
 ### DOING
 
-- mvc
-
 ### DONE
 
+- mvc
 - tothorti
 - transférer graphs culture sur l'horticulture
 - changer le "avec" en "indifférencié"

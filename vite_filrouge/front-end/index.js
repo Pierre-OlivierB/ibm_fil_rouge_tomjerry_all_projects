@@ -18,35 +18,28 @@ fetch(request)
     }
   })
   .then((data) => {
-    // console.log(data);
     data.map((elec) => {
       dataEner.push(elec.qtx_ener);
       dataPer.push(elec.begin_hour);
       dataMonth.push(elec.label_name);
-      // console.log(dataEner, dataPer);
     });
   })
   .then(() => {
     const infos = load(dataEner, dataPer, dataMonth);
-    // console.log(infos);
+
     const el_6 = document.getElementById("chart_6");
-    // console.log(el_6);
 
     const chart_6 = toastui.Chart.heatmapChart({
       el: el_6,
       data: infos[0],
       options: infos[1],
     });
-
-    // console.log(chart_6);
   });
 
 function load(ener, per, month) {
-  // console.log(month);
   let uniq_month = [...new Set(month)];
   let uniq_per = [...new Set(per)];
-  // console.log(uniq_per);
-  // console.log(ener);
+
   let table = [];
   let temp = [];
   for (let i = 0; i < ener.length; i++) {
@@ -59,7 +52,7 @@ function load(ener, per, month) {
       table.push(temp);
     }
   }
-  // console.log(table);
+
   const data_6 = {
     categories: {
       x: uniq_per,
@@ -91,47 +84,6 @@ function load(ener, per, month) {
     },
     responsive: {
       animation: { duration: 100 },
-      // rules: [
-      //   {
-      //     condition: ({ width: w }) => {
-      //       return w <= 800;
-      //     },
-      //     options: {
-      //       xAxis: {
-      //         tick: { interval: 2 },
-      //         label: { interval: 2 },
-      //       },
-      //       legend: {
-      //         align: "bottom",
-      //       },
-      //     },
-      //   },
-      //   {
-      //     condition: ({ width: w }) => {
-      //       return w <= 600;
-      //     },
-      //     options: {
-      //       xAxis: {
-      //         tick: { interval: 6 },
-      //         label: { interval: 6 },
-      //       },
-      //     },
-      //   },
-      //   {
-      //     condition: ({ width: w, height: h }) => {
-      //       return w <= 500 && h <= 400;
-      //     },
-      //     options: {
-      //       chart: { title: "" },
-      //       legend: {
-      //         visible: false,
-      //       },
-      //       exportMenu: {
-      //         visible: false,
-      //       },
-      //     },
-      //   },
-      // ],
     },
     xAxis: { pointOnColumn: false, title: { text: "Period" } },
     yAxis: { title: "Month" },
@@ -155,65 +107,24 @@ async function postJson(bigData = {}) {
       referrerPolicy: "no-referrer",
       body: JSON.stringify(bigData),
     });
-    // console.log(bigData);
-    // console.log(response);
     const result = await response.json();
     return result.value.qtx_ener;
   } catch (err) {
     console.error(err);
   }
-  // const bigData = { begin_hour: hour.value, label_name: meet.value };
 }
-// postJson(bigData);
-// *------------------------------------------------------------
-// !-------------------------------------
-// ! to save
-// const test = document.getElementById("moment-choose");
-// test.addEventListener("click", async (e) => {
-//   e.preventDefault();
-//   const hour = document.getElementById("tranche-horraire");
-//   const meet = document.getElementById("meeting-time");
-//   console.log(hour.value);
-//   console.log(meet.value);
-//   // const request2 = new Request("http://localhost:3001/getelecbymonth", {
-//   //   method: "POST",
-//   //   body: JSON.stringify({
-//   //     begin_hour: hour.value,
-//   //     label_name: meet.value,
-//   //   }),
-//   //   headers: {
-//   //     "Content-type": "application/json; charset=UTF-8",
-//   //   },
-//   // });
-//   // console.log(request2);
-//   let data = { begin_hour: hour.value, label_name: meet.value };
 
-//   // const response = await fetch("http://localhost:3001/getelecbymonth", {
-//   //   method: "POST",
-//   //   headers: {
-//   //     "Content-type": "application/json",
-//   //   },
-//   //   body: JSON.stringify(data),
-//   // });
-//   // const targetData = await response.json();
-//   // console.log(targetData);
-
-//   postJson({ data: data });
-// });
-// !-------------------------------------
 let moment = 120;
-// console.log("render");
+
 const test = document.getElementById("moment-choose");
 test.addEventListener("click", async (e) => {
   e.preventDefault();
   const hour = document.getElementById("tranche-horraire");
   const meet = document.getElementById("meeting-time");
-  // console.log(hour.value);
-  // console.log(meet.value);
+
   let data = { begin_hour: hour.value, label_name: meet.value };
-  console.log(data);
   moment = await postJson({ data });
-  // return moment;
+
   const el_7 = document.getElementById("chart_7");
   el_7.innerHTML = "";
   const data_7 = {
@@ -229,12 +140,11 @@ test.addEventListener("click", async (e) => {
     data: data_7,
     options: options_7,
   });
-  console.log(moment);
 });
 
 const el_7 = document.getElementById("chart_7");
 var baseColor = "#406abf";
-// console.log(el_7);
+
 const data_7 = {
   series: [
     {

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+// *redirect in controllers
 const webController = require("../controllers/c_web_data");
 
 router.get("/", (req, res) => {
@@ -9,7 +10,7 @@ router.get("/", (req, res) => {
 
 // *electricity
 router.get("/electricity", webController.electricity);
-router.get("/getelecbymonth", webController.getelecbymonth);
+router.post("/getelecbymonth", webController.getelecbymonth);
 // *culture
 router.get("/culture/pommedeterre", webController.culture_pommedeterre);
 router.get("/culture/pommedeterresans", webController.culture_pommedeterresans);
