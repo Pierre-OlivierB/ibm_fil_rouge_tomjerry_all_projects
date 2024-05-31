@@ -45,4 +45,19 @@ router.get(
 // *fields
 router.get("/fields", webController.fields);
 
+// *connexion
+router.post("/login", webController.connexion);
+router.get("/select", webController.seeAllUsers);
+
+// TODO : ----------------
+router.post("/createaccount", webController.createUser);
+router.post("/selectone", webController.seeUser);
+// router.post("/login", userController.loginUser);
+
+// router.put("/update/:id_user", userController.updateUser);
+
+// router.delete("/delete/:id_user", userController.deleteUser);
+
+// router.get("/logout", userController.logoutUser);
+
 module.exports = router;

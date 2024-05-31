@@ -1,4 +1,6 @@
 const mysql = require("mysql");
+const bcrypt = require("bcrypt");
+const Jwt = require("jsonwebtoken");
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -705,6 +707,86 @@ const mfields = (req, res) => {
   });
 };
 
+// !--------------------------------------------
+// *--------------------------------------------
+// * ----------Ajout pour connexion-------------
+// *--------------------------------------------
+// !--------------------------------------------
+
+const mconnexion = (req, res) => {
+  const sql = "SELECT * FROM employee WHERE email=?";
+  db.query(sql, [req.body.email], (err, result) => {
+    if (err) return res.json({ Error: "Un problème est survenu" });
+    // console.log(req.body);
+    if (result.length > 0) {
+      bcrypt.compare(req.body.pass.toString(), result[0].pwrd, (err, respo) => {
+        // console.log(result[0].pwrd);
+        if (err) return res.json({ Error: "Erreur connection" });
+        if (respo) {
+          const name = result[0].name;
+          const role = result[0].role;
+          //   console.log(role);
+          const token = Jwt.sign({ name: name, role: role }, "jwt-secret-key", {
+            expiresIn: "1d",
+          });
+          res.cookie("tokenco", token);
+          return res.json({ Status: "Ok", token: token });
+        } else return res.json({ Status: "erreur mot de pass" });
+      });
+    } else {
+      return res.json({ Error: "Le compte n'existe pas" });
+    }
+  });
+};
+const mSeeAllUser = (req, res) => {
+  const sql = "SELECT * FROM employee";
+
+  db.query(sql, (err, data) => {
+    if (err) return router.json("error");
+    return res.json(data);
+  });
+};
+
+// TODO :
+
+const mCreateUser = (req, res) => {
+  const sql = "INSERT INTO employee(First_name,Last_name,email,pwrd) VALUES(?)";
+  //   console.log(values);
+  db.query(sql, [values], (err, result) => {
+    // console.log(result);
+    if (err) return res.json("error");
+    return res.json(result);
+  });
+};
+const mSeeUser = (req, res) => {
+  const sql = "Select * from employee WHERE email=?";
+  const data = [req.body.email];
+  // console.log("test", data);
+  db.query(sql, data, (err, result) => {
+    if (err) return res.json("error");
+    return res.json(result);
+  });
+};
+// const mUpdateUser = (req, res) => {
+//   const sql = "UPDATE user SET name=?,email=? WHERE id_user=?";
+//   const data = [req.body.name, req.body.email];
+
+//   const idUser = req.params.id_user;
+//   db.query(sql, [...data, idUser], (err, result) => {
+//     if (err) return res.json("error");
+//     return res.json(result);
+//   });
+// };
+
+// const mDeleteUser = (req, res) => {
+//   const sql = "DELETE FROM user WHERE id_user=?";
+//   const idUser = req.params.id_user;
+//   db.query(sql, [idUser], (err, result) => {
+//     if (err) return res.json("Error");
+//     return res.json(result);
+//   });
+// };
+
 module.exports = {
   melectricity,
   mgetelecbymonth,
@@ -730,4 +812,8 @@ module.exports = {
   mhorticulture_tothorti,
   mhorticulture_tothortisans,
   mfields,
+  mconnexion,
+  mSeeAllUser,
+  mCreateUser,
+  mSeeUser,
 };

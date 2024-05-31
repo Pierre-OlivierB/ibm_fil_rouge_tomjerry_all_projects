@@ -14,121 +14,102 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="labelId">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>50</y>
-      <width>271</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>id</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelUser">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>130</y>
-      <width>291</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>user</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelContent">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>250</y>
-      <width>351</width>
-      <height>211</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>content</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelTitle">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>200</y>
-      <width>331</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>title</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelYear">
-    <property name="geometry">
-     <rect>
-      <x>260</x>
-      <y>470</y>
-      <width>151</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>year</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblId">
-    <property name="geometry">
-     <rect>
-      <x>34</x>
-      <y>50</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>ID :</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="lblUser">
     <property name="geometry">
      <rect>
       <x>30</x>
       <y>130</y>
-      <width>41</width>
+      <width>61</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>USER :</string>
+     <string>USERS :</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblTitle">
+   <widget class="QTableWidget" name="tableData">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>200</y>
-      <width>51</width>
-      <height>16</height>
+      <x>90</x>
+      <y>140</y>
+      <width>341</width>
+      <height>192</height>
+     </rect>
+    </property>
+    <property name="rowCount">
+     <number>1</number>
+    </property>
+    <property name="columnCount">
+     <number>2</number>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>150</number>
+    </attribute>
+    <attribute name="verticalHeaderMinimumSectionSize">
+     <number>28</number>
+    </attribute>
+    <attribute name="verticalHeaderDefaultSectionSize">
+     <number>30</number>
+    </attribute>
+    <row/>
+    <column>
+     <property name="text">
+      <string>name</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>mail</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="updateAccountBtn">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>480</y>
+      <width>151</width>
+      <height>28</height>
      </rect>
     </property>
     <property name="text">
-     <string>TITLE :</string>
+     <string>Modifier utilisateur</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblYear">
+   <widget class="QLabel" name="updateAccountTitle">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>470</y>
-      <width>55</width>
+      <x>30</x>
+      <y>420</y>
+      <width>191</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>YEAR :</string>
+     <string>Mail de l'utilisateur à modifier:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="updateAccountTxt">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>450</y>
+      <width>371</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="errorZone">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>530</y>
+      <width>371</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>120</y>
+      <y>220</y>
       <width>55</width>
       <height>16</height>
      </rect>
@@ -30,8 +30,8 @@
    <widget class="QLabel" name="titlePass">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>200</y>
+      <x>70</x>
+      <y>300</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -44,7 +44,7 @@
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>290</y>
+      <y>380</y>
       <width>91</width>
       <height>16</height>
      </rect>
@@ -57,7 +57,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>390</y>
+      <y>480</y>
       <width>121</width>
       <height>41</height>
      </rect>
@@ -70,7 +70,7 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>110</y>
+      <y>210</y>
       <width>261</width>
       <height>41</height>
      </rect>
@@ -80,7 +80,7 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>190</y>
+      <y>290</y>
       <width>261</width>
       <height>41</height>
      </rect>
@@ -90,7 +90,7 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>280</y>
+      <y>370</y>
       <width>261</width>
       <height>41</height>
      </rect>
@@ -100,13 +100,72 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>440</y>
+      <y>530</y>
       <width>321</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titleLastName">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>140</y>
+      <width>55</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Nom :</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textLastName">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>130</y>
+      <width>261</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titleFirstName">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>60</y>
+      <width>55</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Prénom :</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textFirstName">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>50</y>
+      <width>261</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titleCreate">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>10</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Création d'employé</string>
     </property>
    </widget>
   </widget>

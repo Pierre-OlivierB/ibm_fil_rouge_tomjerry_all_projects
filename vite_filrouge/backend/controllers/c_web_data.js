@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+const Jwt = require("jsonwebtoken");
 const webdataModel = require("../models/m_web_data.js");
 // *redirect in models
 
@@ -30,6 +32,38 @@ const horticulture_tothortisans = webdataModel.mhorticulture_tothortisans;
 // *fields
 const fields = webdataModel.mfields;
 
+// *connexion
+const connexion = (req, res) => {
+  // * Remplir ici
+  webdataModel.mconnexion(req, res);
+};
+const seeAllUsers = webdataModel.mSeeAllUser;
+
+// TODO : ------------------------
+const cost = 10;
+
+const createUser = (req, res) => {
+  // console.log("test : ", req);
+  bcrypt.hash(req.body.pass.toString(), cost, (err, hash) => {
+    if (err) return res.json(console.log("Erreur de hashage"));
+    values = [req.body.First_name, req.body.Last_name, req.body.email, hash];
+    webdataModel.mCreateUser(req, res);
+  });
+};
+const seeUser = (req, res) => {
+  // console.log("see");
+  // * Remplir ici
+  webdataModel.mSeeUser(req, res);
+};
+// const updateUser = (req, res) => {
+//   // * Remplir ici
+//   userModel.mUpdateUser(req, res);
+// };
+// const deleteUser = (req, res) => {
+//   // * Remplir ici
+//   userModel.mDeleteUser(req, res);
+// };
+
 module.exports = {
   electricity,
   getelecbymonth,
@@ -55,4 +89,8 @@ module.exports = {
   horticulture_tothorti,
   horticulture_tothortisans,
   fields,
+  connexion,
+  seeAllUsers,
+  createUser,
+  seeUser,
 };
