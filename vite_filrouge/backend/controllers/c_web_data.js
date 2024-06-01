@@ -46,7 +46,13 @@ const createUser = (req, res) => {
   // console.log("test : ", req);
   bcrypt.hash(req.body.pass.toString(), cost, (err, hash) => {
     if (err) return res.json(console.log("Erreur de hashage"));
-    values = [req.body.First_name, req.body.Last_name, req.body.email, hash];
+    values = [
+      req.body.First_name,
+      req.body.Last_name,
+      req.body.Id_Role,
+      req.body.email,
+      hash,
+    ];
     webdataModel.mCreateUser(req, res);
   });
 };

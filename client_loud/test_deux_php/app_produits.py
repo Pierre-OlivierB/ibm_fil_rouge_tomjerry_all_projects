@@ -91,32 +91,48 @@ class View2(QtWidgets.QMainWindow):
         
         # TODO : à décommente :
         self.addRolesList()
-        # self.comboBoxRoles.addItems(self.addRolesList)
+        self.comboBoxRoles.clear()
+        print('result',self.addRolesList())
+        self.comboBoxRoles.addItems(self.addRolesList())
 
     # *test infos equality
 
     def addToArray(self):
         firstName =self.textFirstName.toPlainText()
         lastName =self.textLastName.toPlainText()
+        role=self.comboBoxRoles.currentText()
         email =self.textMail.toPlainText()
         password = self.textPass.toPlainText()
         passConfirm=self.textPassConfirm.toPlainText()
+        match role:
+            case 'rh':
+                Id_Role=2
+            case 'agriculteur':
+                Id_Role=3
         if password==passConfirm:
-            save = {"First_name":str(firstName),"Last_name":str(lastName),"email":str(email),"pass":str(password)}
+            save = {"First_name":str(firstName),"Last_name":str(lastName),"Id_Role":str(Id_Role),"email":str(email),"pass":str(password)}
             self.createUser(save)
             return self.openVue()
         if password !=passConfirm:
             self.errorZone.setText('Les passwords ne correspondent pas')
+
     # TODO : à faire une boucle pour faire la liste :
+    # * Basique = admin id :1, rh id:2, agriculteur id:3
     def addRolesList(self):
         link = "http://localhost:3001/roles"
         r = requests.get(link)
-        print(r.json())
-        # r = [r.json()]
-        # return r
+        # print(r.json())
+        r = [r.json()]
+        temp=[]
+        for element in r[0]:
+            # print(element['role'])
+            temp.append(element['role'])
+        # print("temp",temp)
+        return temp
 
     # *create send
     def createUser(self,new_data):
+        print(new_data)
         link = "http://localhost:3001/createaccount"
         r=requests.post(link,json=new_data)
         r =r.json()   

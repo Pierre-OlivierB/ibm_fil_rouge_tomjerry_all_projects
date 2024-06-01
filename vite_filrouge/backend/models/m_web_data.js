@@ -754,10 +754,11 @@ const mSeeAllUser = (req, res) => {
 // TODO :
 
 const mCreateUser = (req, res) => {
-  const sql = "INSERT INTO employee(First_name,Last_name,email,pwrd) VALUES(?)";
+  const sql =
+    "INSERT INTO employee(First_name,Last_name,Id_Role,email,pwrd) VALUES(?)";
   //   console.log(values);
   db.query(sql, [values], (err, result) => {
-    // console.log(result);
+    console.log(values);
     if (err) return res.json("error");
     return res.json(result);
   });
