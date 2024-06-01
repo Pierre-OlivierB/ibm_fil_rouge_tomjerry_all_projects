@@ -714,7 +714,8 @@ const mfields = (req, res) => {
 // !--------------------------------------------
 
 const mconnexion = (req, res) => {
-  const sql = "SELECT * FROM employee WHERE email=?";
+  const sql =
+    "SELECT Id_employee, First_name,Last_name,N_SS,CHECK_ROLE(Id_Role) as role,pwrd,email FROM employee WHERE email=?";
   db.query(sql, [req.body.email], (err, result) => {
     if (err) return res.json({ Error: "Un problème est survenu" });
     // console.log(req.body);
@@ -723,14 +724,16 @@ const mconnexion = (req, res) => {
         // console.log(result[0].pwrd);
         if (err) return res.json({ Error: "Erreur connection" });
         if (respo) {
+          // console.log("res : ", result);
           const name = result[0].name;
           const role = result[0].role;
-          //   console.log(role);
+          // console.log(role);
           const token = Jwt.sign({ name: name, role: role }, "jwt-secret-key", {
             expiresIn: "1d",
           });
           res.cookie("tokenco", token);
-          return res.json({ Status: "Ok", token: token });
+          // console.log(role);
+          return res.json({ Status: "Ok", token: token, role: role });
         } else return res.json({ Status: "erreur mot de pass" });
       });
     } else {
@@ -739,7 +742,8 @@ const mconnexion = (req, res) => {
   });
 };
 const mSeeAllUser = (req, res) => {
-  const sql = "SELECT * FROM employee";
+  const sql =
+    "SELECT Id_employee, First_name,Last_name,N_SS,CHECK_ROLE(Id_Role) as role,pwrd,email FROM employee";
 
   db.query(sql, (err, data) => {
     if (err) return router.json("error");
@@ -759,7 +763,17 @@ const mCreateUser = (req, res) => {
   });
 };
 const mSeeUser = (req, res) => {
-  const sql = "Select * from employee WHERE email=?";
+  const sql =
+    "Select Id_employee, First_name,Last_name,N_SS,CHECK_ROLE(Id_Role) as role,pwrd,email from employee WHERE email=?";
+  const data = [req.body.email];
+  // console.log("test", data);
+  db.query(sql, data, (err, result) => {
+    if (err) return res.json("error");
+    return res.json(result);
+  });
+};
+const mSeeRoles = (req, res) => {
+  const sql = "SELECT CHECK_ROLE(Id_Role) as role from role GROUP BY role;";
   const data = [req.body.email];
   // console.log("test", data);
   db.query(sql, data, (err, result) => {
@@ -816,4 +830,5 @@ module.exports = {
   mSeeAllUser,
   mCreateUser,
   mSeeUser,
+  mSeeRoles,
 };

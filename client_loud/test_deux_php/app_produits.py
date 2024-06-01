@@ -17,7 +17,7 @@ class View1(QtWidgets.QMainWindow):
         # * target location of the file
         uic.loadUi(os.path.join(os.path.dirname(__file__), 'coToApiPhp.ui'), self)
         # * creat and connect two btn
-        self.createAccountBtn.clicked.connect(self.openVue2)
+        # self.createAccountBtn.clicked.connect(self.openVue2)
         self.connexionBtn.clicked.connect(self.launch)
 
     # * open views
@@ -30,12 +30,21 @@ class View1(QtWidgets.QMainWindow):
         self.hide()
         Vue3 = View3(self)
         Vue3.show()
+
+    def launchView(self):
+        global account
+        if account == 'rh':
+            self.openVue2()
+        if account =='agriculteur':
+            self.openVue3()
     
     # * front after connexion test
     def launch(self):
         test = self.addToArray()
         if test ==True :
-            self.openVue3()
+            # print(token)
+            # self.openVue3()
+            self.launchView()
         if test ==False :
             self.errorZone.setText('Mail ou mdp mauvais')
         else :
@@ -46,8 +55,10 @@ class View1(QtWidgets.QMainWindow):
         # print("data",data)
         if data['Status'] == "Ok":
             # *
-            global token
+            global token, account
             token=data['token']
+            account= data['role']
+            # print(data)
             return True
         if data['erreur'] == True :
             return False
@@ -77,6 +88,10 @@ class View2(QtWidgets.QMainWindow):
         super().__init__(parent)
         uic.loadUi(os.path.join(os.path.dirname(__file__), 'createCoToApiPhp.ui'), self)
         self.signupBtn.clicked.connect(self.addToArray)
+        
+        # TODO : à décommente :
+        self.addRolesList()
+        # self.comboBoxRoles.addItems(self.addRolesList)
 
     # *test infos equality
 
@@ -92,6 +107,13 @@ class View2(QtWidgets.QMainWindow):
             return self.openVue()
         if password !=passConfirm:
             self.errorZone.setText('Les passwords ne correspondent pas')
+    # TODO : à faire une boucle pour faire la liste :
+    def addRolesList(self):
+        link = "http://localhost:3001/roles"
+        r = requests.get(link)
+        print(r.json())
+        # r = [r.json()]
+        # return r
 
     # *create send
     def createUser(self,new_data):
@@ -123,7 +145,7 @@ class View3(QtWidgets.QMainWindow):
         account = {"email":self.updateAccountTxt.text()}
         # print("account",account)
         test = self.userExist(account)
-        print(test)
+        # print(test)
         if(len(test)!=0):
             account = test
             self.hide()
@@ -174,7 +196,7 @@ class View4(QtWidgets.QMainWindow):
         uic.loadUi(os.path.join(os.path.dirname(__file__), 'updateEmployee.ui'), self)
         self.validateUpdateAccountBtn.clicked.connect(self.openVue3)
         global account
-        print(account)
+        # print(account)
 
     def openVue3(self):
         self.hide()

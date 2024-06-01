@@ -55,6 +55,11 @@ const seeUser = (req, res) => {
   // * Remplir ici
   webdataModel.mSeeUser(req, res);
 };
+const seeRoles = (req, res) => {
+  // console.log("see");
+  // * Remplir ici
+  webdataModel.mSeeRoles(req, res);
+};
 // const updateUser = (req, res) => {
 //   // * Remplir ici
 //   userModel.mUpdateUser(req, res);
@@ -93,4 +98,5 @@ module.exports = {
   seeAllUsers,
   createUser,
   seeUser,
+  seeRoles,
 };

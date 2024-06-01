@@ -52,6 +52,7 @@ router.get("/select", webController.seeAllUsers);
 // TODO : ----------------
 router.post("/createaccount", webController.createUser);
 router.post("/selectone", webController.seeUser);
+router.get("/roles", webController.seeRoles);
 // router.post("/login", userController.loginUser);
 
 // router.put("/update/:id_user", userController.updateUser);
