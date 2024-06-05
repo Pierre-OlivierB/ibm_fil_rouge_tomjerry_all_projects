@@ -9,6 +9,8 @@ import json
 
 token =''
 account=''
+roleAccount=''
+userToUpdate=''
 
 class View1(QtWidgets.QMainWindow):
   
@@ -33,9 +35,9 @@ class View1(QtWidgets.QMainWindow):
 
     def launchView(self):
         global account
-        if account == 'rh':
+        if roleAccount == 'rh':
             self.openVue2()
-        if account =='agriculteur':
+        if roleAccount =='agriculteur':
             self.openVue3()
     
     # * front after connexion test
@@ -55,9 +57,10 @@ class View1(QtWidgets.QMainWindow):
         # print("data",data)
         if data['Status'] == "Ok":
             # *
-            global token, account
+            global token, account,roleAccount
             token=data['token']
-            account= data['role']
+            account=self.textMail.toPlainText()
+            roleAccount= data['role']
             # print(data)
             return True
         if data['erreur'] == True :
@@ -157,13 +160,13 @@ class View3(QtWidgets.QMainWindow):
         # updateAccountTxt
 
     def openVue4(self):
-        global account
-        account = {"email":self.updateAccountTxt.text()}
+        global userToUpdate
+        userToUpdate = {"email":self.updateAccountTxt.text()}
         # print("account",account)
-        test = self.userExist(account)
+        test = self.userExist(userToUpdate)
         # print(test)
         if(len(test)!=0):
-            account = test
+            userToUpdate = test
             self.hide()
             Vue4 = View4(self)
             Vue4.show()
@@ -204,15 +207,21 @@ class View3(QtWidgets.QMainWindow):
         return product_list        
 
 class View4(QtWidgets.QMainWindow):
-
+    # TODO : enlever le champ N SS dans la vue modif (on ne change pas de N SS)
+    # TODO : Ajouter le champ N SS côté admin pour l'ajout
+    # TODO : les deux champs modifiables sont la spécialité et le rôle (comboBox de choix)
+    # TODO : présélectionner le role/spé actuel
+    # TODO : change in view1 select role rh = admin and agri = rh
+    # TODO : création 4 comptes sur bdd : admin (creation perso), seller(vente électricité, app mobile), rh (modification role et spé), viewer (all and agri)
     # *front with array
     def __init__(self,parent=None):
         super().__init__(parent)
         # *target location of the file
         uic.loadUi(os.path.join(os.path.dirname(__file__), 'updateEmployee.ui'), self)
         self.validateUpdateAccountBtn.clicked.connect(self.openVue3)
-        global account
-        # print(account)
+        global userToUpdate,account
+        print("current account",account)
+        print("user to update",userToUpdate)
 
     def openVue3(self):
         self.hide()
