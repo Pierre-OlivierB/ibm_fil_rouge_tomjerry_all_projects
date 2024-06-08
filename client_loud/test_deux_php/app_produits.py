@@ -12,6 +12,7 @@ account=''
 roleAccount=''
 userToUpdate=''
 specialities=[]
+alreadyPress=0
 
 class View1(QtWidgets.QMainWindow):
   
@@ -233,10 +234,11 @@ class View4(QtWidgets.QMainWindow):
         uic.loadUi(os.path.join(os.path.dirname(__file__), 'updateEmployee.ui'), self)
         # self.validateUpdateAccountBtn.clicked.connect(self.openVue3)
         self.validateUpdateAccountBtn.clicked.connect(self.updateEmployee)
-        global userToUpdate,account
+        global userToUpdate,account,alreadyPress
         print("current account",account)
         print("user to update",userToUpdate)
         self.addPeopleAttributes()
+        alreadyPress=0
         self.validateDeleteAccountBtn.clicked.connect(self.deleteEmployee)
         
 
@@ -326,13 +328,28 @@ class View4(QtWidgets.QMainWindow):
         # return temp
     
     def deleteEmployee(self):
-        global userToUpdate
+        global userToUpdate, alreadyPress
         id_target= userToUpdate[0]['Id_employee']
-        self.deleteEmployeeEntities(id_target)
+        if alreadyPress==1:
+            self.deleteEmployeeEntities(id_target)
+        if alreadyPress==0:
+            self.messageDeleteEmployeeEntities(id_target)
+            alreadyPress=1
+        
     
-    def deleteEmployeeEntities(self, id_emp):
+    def messageDeleteEmployeeEntities(self, id_emp):
         self.errorZone.setText(f'Etes vous sûr de vouloir le supprimer ? {id_emp}')
         # TODO : mettre en place une vérification de click pour savoir s'il est sûr de la suppression.
+    
+    def deleteEmployeeEntities(self, id_emp):
+        # print("delete ",id_emp)
+        link = "http://localhost:3001/delete/{}".format(id_emp)
+        r = requests.delete(link)
+        # print(r.json())
+        r = r.json()
+        print(r)
+        self.openVue3()
+
         
     
     
