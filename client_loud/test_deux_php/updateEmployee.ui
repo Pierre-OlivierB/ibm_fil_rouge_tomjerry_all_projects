@@ -31,13 +31,13 @@
     <property name="geometry">
      <rect>
       <x>230</x>
-      <y>90</y>
+      <y>20</y>
       <width>181</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Modification utilisateur: </string>
+     <string>Modification employé: </string>
     </property>
    </widget>
    <widget class="QLabel" name="errorZone">
@@ -53,34 +53,11 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="titleNss">
-    <property name="geometry">
-     <rect>
-      <x>164</x>
-      <y>210</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>N SS :</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textSpeciality">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>360</y>
-      <width>261</width>
-      <height>41</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="titleSpeciality">
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>380</y>
+      <y>410</y>
       <width>91</width>
       <height>16</height>
      </rect>
@@ -89,21 +66,11 @@
      <string>Spécialitée :</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textNss">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>200</y>
-      <width>261</width>
-      <height>41</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="titleRole">
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>290</y>
+      <y>320</y>
       <width>91</width>
       <height>20</height>
      </rect>
@@ -112,14 +79,115 @@
      <string>Role :</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textRole">
+   <widget class="QComboBox" name="comboBoxRoles">
     <property name="geometry">
      <rect>
       <x>270</x>
-      <y>280</y>
+      <y>310</y>
       <width>261</width>
       <height>41</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titleFirstName">
+    <property name="geometry">
+     <rect>
+      <x>164</x>
+      <y>80</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Prénom :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titleMail">
+    <property name="geometry">
+     <rect>
+      <x>164</x>
+      <y>240</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Email :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titleLastName">
+    <property name="geometry">
+     <rect>
+      <x>164</x>
+      <y>160</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Nom :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="rsltLastName">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>160</y>
+      <width>251</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="rsltFirstName">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>80</y>
+      <width>261</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="rsltMail">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>240</y>
+      <width>251</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxSpec">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>380</y>
+      <width>261</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="validateDeleteAccountBtn">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>470</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Delete Account</string>
     </property>
    </widget>
   </widget>

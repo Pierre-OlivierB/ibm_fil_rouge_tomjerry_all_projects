@@ -755,17 +755,18 @@ const mSeeAllUser = (req, res) => {
 
 const mCreateUser = (req, res) => {
   const sql =
-    "INSERT INTO employee(First_name,Last_name,Id_Role,email,pwrd) VALUES(?)";
+    "INSERT INTO employee(First_name,Last_name,N_SS,Id_Role,email,pwrd) VALUES(?)";
   //   console.log(values);
   db.query(sql, [values], (err, result) => {
-    console.log(values);
+    console.log("values ", values);
+    console.log("res ", res);
     if (err) return res.json("error");
     return res.json(result);
   });
 };
 const mSeeUser = (req, res) => {
   const sql =
-    "Select Id_employee, First_name,Last_name,N_SS,CHECK_ROLE(Id_Role) as role,pwrd,email from employee WHERE email=?";
+    "Select Id_employee, First_name,Last_name,N_SS,CHECK_ROLE(Id_Role) as role,pwrd,email,Id_Speciality from employee WHERE email=?";
   const data = [req.body.email];
   // console.log("test", data);
   db.query(sql, data, (err, result) => {
@@ -782,25 +783,35 @@ const mSeeRoles = (req, res) => {
     return res.json(result);
   });
 };
-// const mUpdateUser = (req, res) => {
-//   const sql = "UPDATE user SET name=?,email=? WHERE id_user=?";
-//   const data = [req.body.name, req.body.email];
+const mUpdateUser = (req, res) => {
+  const sql =
+    "UPDATE employee SET Id_Role=?,Id_Speciality=? WHERE Id_Employee=?";
+  const data = [req.body.Id_Role, req.body.Id_Speciality];
+  // console.log(req.params);
+  const idUser = req.params.id_user;
+  db.query(sql, [...data, idUser], (err, result) => {
+    if (err) return res.json("error");
+    return res.json(result);
+  });
+};
 
-//   const idUser = req.params.id_user;
-//   db.query(sql, [...data, idUser], (err, result) => {
-//     if (err) return res.json("error");
-//     return res.json(result);
-//   });
-// };
+const mSeeSpecialities = (req, res) => {
+  const sql = "SELECT * FROM `speciality` ORDER BY Id_Speciality ASC";
+  // console.log("test", data);
+  db.query(sql, (err, result) => {
+    if (err) return res.json("error");
+    return res.json(result);
+  });
+};
 
-// const mDeleteUser = (req, res) => {
-//   const sql = "DELETE FROM user WHERE id_user=?";
-//   const idUser = req.params.id_user;
-//   db.query(sql, [idUser], (err, result) => {
-//     if (err) return res.json("Error");
-//     return res.json(result);
-//   });
-// };
+const mDeleteUser = (req, res) => {
+  const sql = "DELETE FROM employee WHERE Id_Employee=?";
+  const idUser = req.params.id_user;
+  db.query(sql, [idUser], (err, result) => {
+    if (err) return res.json("Error");
+    return res.json(result);
+  });
+};
 
 module.exports = {
   melectricity,
@@ -832,4 +843,7 @@ module.exports = {
   mCreateUser,
   mSeeUser,
   mSeeRoles,
+  mUpdateUser,
+  mSeeSpecialities,
+  mDeleteUser,
 };

@@ -53,11 +53,12 @@ router.get("/select", webController.seeAllUsers);
 router.post("/createaccount", webController.createUser);
 router.post("/selectone", webController.seeUser);
 router.get("/roles", webController.seeRoles);
+router.get("/spec", webController.seeSpecialities);
 // router.post("/login", userController.loginUser);
 
-// router.put("/update/:id_user", userController.updateUser);
+router.put("/update/:id_user", webController.updateUser);
 
-// router.delete("/delete/:id_user", userController.deleteUser);
+router.delete("/delete/:id_user", webController.deleteUser);
 
 // router.get("/logout", userController.logoutUser);
 

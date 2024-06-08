@@ -56,10 +56,10 @@
    <widget class="QLabel" name="errorZone">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>40</x>
       <y>420</y>
-      <width>151</width>
-      <height>16</height>
+      <width>391</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">

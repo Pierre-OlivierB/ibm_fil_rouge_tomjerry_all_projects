@@ -49,6 +49,7 @@ const createUser = (req, res) => {
     values = [
       req.body.First_name,
       req.body.Last_name,
+      req.body.N_SS,
       req.body.Id_Role,
       req.body.email,
       hash,
@@ -66,14 +67,19 @@ const seeRoles = (req, res) => {
   // * Remplir ici
   webdataModel.mSeeRoles(req, res);
 };
-// const updateUser = (req, res) => {
-//   // * Remplir ici
-//   userModel.mUpdateUser(req, res);
-// };
-// const deleteUser = (req, res) => {
-//   // * Remplir ici
-//   userModel.mDeleteUser(req, res);
-// };
+const updateUser = (req, res) => {
+  // * Remplir ici
+  webdataModel.mUpdateUser(req, res);
+};
+const seeSpecialities = (req, res) => {
+  // console.log("see");
+  // * Remplir ici
+  webdataModel.mSeeSpecialities(req, res);
+};
+const deleteUser = (req, res) => {
+  // * Remplir ici
+  webdataModel.mDeleteUser(req, res);
+};
 
 module.exports = {
   electricity,
@@ -105,4 +111,7 @@ module.exports = {
   createUser,
   seeUser,
   seeRoles,
+  updateUser,
+  seeSpecialities,
+  deleteUser,
 };
