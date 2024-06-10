@@ -3,6 +3,14 @@ npx expo start
 
 TODO :
 
+- install :
+  npm install @react-navigation/native
+  npm install @react-navigation/native-stack
+  cf : ../client_mobile/filmquest
+
+  Pour la co :
+  D:\formation\cours\react\react-crud\client
+
 - 1 btn : Voir le prix de l'électricité
 - 1 btn : vendre et mettre qtt
 - 1 btn : voir la production d'élec
