@@ -2,13 +2,20 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import ImageViewer from "./components/ImageViewer";
-import Button from "./components/Button";
-
-const PlaceholderImage = require("./assets/logo.png");
 const ImageBg = require("./assets/farm.png");
 
+import Home from "./views/Home";
+import Production from "./views/Production";
+import Electricity from "./views/Electricity";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
+// import backImage from "./assets/49408_arrow_back_icon.png";
+
 export default function App() {
+  const Stack = createNativeStackNavigator();
+
+  // TODO :https://stackoverflow.com/questions/54599305/how-to-set-background-image-with-react-native-and-react-navigation
+
   return (
     <View style={styles.container}>
       <ImageBackground source={ImageBg} style={styles.bgImage}>
@@ -16,18 +23,42 @@ export default function App() {
           style={styles.bgLinear}
           colors={["rgba(198, 207, 236,0.7)", "rgba(255, 236, 179,0.3)"]}
         >
-          <View style={styles.textContainer}>
-            <Text style={styles.textPart}>
-              Bienvenue sur l'app de Tom Et Jerry
-            </Text>
-          </View>
-          <View style={styles.imageContainer}>
-            <ImageViewer placeholderImageSource={PlaceholderImage} />
-          </View>
-          <View style={styles.footerContainer}>
-            <Button theme="primary" label="Choose" />
-            <Button label="use" />
-          </View>
+          <NavigationContainer
+            initialRouteName="Home"
+            theme={{
+              ...DefaultTheme,
+              colors: { ...DefaultTheme.colors, background: "transparent" },
+            }}
+          >
+            <Stack.Navigator>
+              <Stack.Screen
+                name="Home"
+                component={Home}
+                options={{
+                  title: "Bienvenue",
+                  headerStyle: {
+                    backgroundColor: "#63b2f2",
+                  },
+                }}
+              />
+
+              <Stack.Screen
+                name="Production"
+                component={Production}
+                options={{
+                  title: "Production",
+                }}
+              />
+
+              <Stack.Screen
+                name="Electricity"
+                component={Electricity}
+                options={{
+                  title: "Electricity",
+                }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
           <StatusBar style="auto" />
         </LinearGradient>
       </ImageBackground>
