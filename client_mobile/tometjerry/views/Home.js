@@ -5,7 +5,7 @@ import Button from "../components/Button";
 
 const PlaceholderImage = require("../assets/logo.png");
 
-function Home({ route }) {
+function Home({ navigation }) {
   const styles = StyleSheet.create({
     container: {
       color: "#406abf",
@@ -44,6 +44,8 @@ function Home({ route }) {
       resizeMode: "stretch",
     },
   });
+  // const data = route;
+  // console.log(data);
   return (
     <View style={styles.textContainer}>
       <View style={styles.textContainer}>
@@ -53,8 +55,8 @@ function Home({ route }) {
         <ImageViewer placeholderImageSource={PlaceholderImage} />
       </View>
       <View style={styles.footerContainer}>
-        <Button theme="primary" label="Choose" />
-        <Button label="use" />
+        <Button theme="primary" label="Choose" navigation={navigation} />
+        <Button label="use" navigation={navigation} />
       </View>
     </View>
   );

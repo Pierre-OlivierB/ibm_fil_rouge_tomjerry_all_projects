@@ -1,26 +1,42 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, FlatList } from "react-native";
+import Button from "../components/Button";
 
-function Electricity({ route }) {
+function Electricity({ navigation }) {
   const styles = StyleSheet.create({
-    vignetteStyle: {
+    textContainer: {
+      alignItems: "center",
+      justifyContent: "center",
       flex: 1,
-      flexDirection: "column",
-      backgroundColor: "#e5e5e9",
-      borderRadius: 15,
-      elevation: 8,
-      paddingLeft: 16,
-      paddingRight: 16,
-      paddingTop: 20,
-      paddingBottom: 10,
-      marginTop: 6,
-      marginBottom: 6,
-      marginLeft: 16,
-      marginRight: 16,
+    },
+    bgLinear: {
+      flex: 1,
+    },
+    footerContainer: {
+      flex: 1,
+      alignItems: "end",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    textPart: {
+      width: 300,
+      fontSize: 25,
+      color: "#406abf",
+      textAlign: "center",
+      fontWeight: "bold",
     },
   });
   //   console.log(route);
 
-  return <View style={{ ...styles.vignetteStyle }}></View>;
+  return (
+    <View style={styles.textContainer}>
+      <View style={styles.bgLinear}>
+        <Text style={styles.textPart}>Chart electricity</Text>
+      </View>
+      <View style={styles.footerContainer}>
+        <Button label="use" navigation={navigation} />
+      </View>
+    </View>
+  );
 }
 export default Electricity;

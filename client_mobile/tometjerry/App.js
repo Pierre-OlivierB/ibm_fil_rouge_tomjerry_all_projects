@@ -47,6 +47,9 @@ export default function App() {
                 component={Production}
                 options={{
                   title: "Production",
+                  headerStyle: {
+                    backgroundColor: "#fa7e70",
+                  },
                 }}
               />
 
@@ -55,6 +58,9 @@ export default function App() {
                 component={Electricity}
                 options={{
                   title: "Electricity",
+                  headerStyle: {
+                    backgroundColor: "#406abf",
+                  },
                 }}
               />
             </Stack.Navigator>

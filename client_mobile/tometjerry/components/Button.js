@@ -1,7 +1,7 @@
 import { StyleSheet, View, Pressable, Text, ToastAndroid } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
-export default function Button({ label, theme }) {
+export default function Button({ label, theme, navigation }) {
   function ShowToast() {
     ToastAndroid.show("Tout marche nikel chrome", ToastAndroid.SHORT);
   }
@@ -15,7 +15,7 @@ export default function Button({ label, theme }) {
       >
         <Pressable
           style={[styles.button, { backgroundColor: "#406abf" }]}
-          onPress={() => ShowToast()}
+          onPress={() => navigation.navigate("Electricity")}
         >
           <FontAwesome
             name="picture-o"
@@ -34,7 +34,7 @@ export default function Button({ label, theme }) {
     <View style={styles.buttonContainer}>
       <Pressable
         style={styles.button}
-        onPress={() => alert("You pressed a button.")}
+        onPress={() => navigation.navigate("Production")}
       >
         <Text style={styles.buttonLabel}>{label}</Text>
       </Pressable>

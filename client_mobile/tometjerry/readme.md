@@ -2,13 +2,14 @@ launch :
 npx expo start
 
 TODO :
+cf : ../client_mobile/filmquest
 
-- install :
-  npm install @react-navigation/native
-  npm install @react-navigation/native-stack
-  cf : ../client_mobile/filmquest
-
-  Pour la co :
+- Mettre en place les routes
+- afficher du contenu en fonction
+- afficher des graphiques
+- prendre le csv d'électricity pour montrer un usage
+- mettre en place un input
+- Pour la co :
   D:\formation\cours\react\react-crud\client
 
 - 1 btn : Voir le prix de l'électricité
@@ -19,11 +20,13 @@ TODO :
 - graphique
 - btn vendre élec
 - btn vu production
+- encart pour vendre élec
 
 - Vue Production
 - graphique
 - btn vendre élec
 - btn vu production
+- encart pour vendre élec
 
 - pour vendre élec :
   table product energy en négatif
