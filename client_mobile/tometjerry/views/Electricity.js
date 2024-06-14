@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import Button from "../components/Button";
 
 function Electricity({ navigation }) {
@@ -33,6 +33,9 @@ function Electricity({ navigation }) {
       <View style={styles.bgLinear}>
         <Text style={styles.textPart}>Chart electricity</Text>
       </View>
+      {/* !--------------------- */}
+      {/* !--------Mettre les chiffres ici actuel------- */}
+      {/* !--------------------- */}
       <View style={styles.footerContainer}>
         <Button label="use" navigation={navigation} />
       </View>

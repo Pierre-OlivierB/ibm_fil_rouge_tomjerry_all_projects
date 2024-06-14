@@ -43,7 +43,7 @@ front = here
 - nettoyage du code
 - commenter
 - ajouter des informations dans la vue tableau rh (mail, spé et role)
--
+- mettre en place des vérifications des intputs.
 
 ## DONE :
 

@@ -33,6 +33,9 @@ function Production({ navigation }) {
       <View style={styles.bgLinear}>
         <Text style={styles.textPart}>Chart Production</Text>
       </View>
+      {/* !--------------------- */}
+      {/* !--------Mettre les chiffres ici actuel------- */}
+      {/* !--------------------- */}
       <View style={styles.footerContainer}>
         <Button theme="primary" label="Choose" navigation={navigation} />
       </View>

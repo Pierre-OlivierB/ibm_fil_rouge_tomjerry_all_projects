@@ -12,11 +12,10 @@ npm run devStart
 
 ### TO DO
 
+- gestion des comptes (invité/rh/admin)
 - .env
 - try catch
 - securité
-- api adapté au mobile
-- api adapté au client lourd
 - group by si d'autres terrain font du même produit avec select mère
 - ajouter metrique t/he
 - barchart => verification des resultats suite aux selects
@@ -26,6 +25,8 @@ npm run devStart
 
 ### DONE
 
+- api adapté au mobile
+- api adapté au client lourd
 - mvc
 - tothorti
 - transférer graphs culture sur l'horticulture

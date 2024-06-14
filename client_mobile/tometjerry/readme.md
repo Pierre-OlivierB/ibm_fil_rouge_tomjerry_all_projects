@@ -2,11 +2,13 @@ launch :
 npx expo start
 
 TODO :
-cf : ../client_mobile/filmquest
+
+- desinstal npm i react-native-charts-wrapper & react-native-scrollable-tab-view
+  cf : ../client_mobile/filmquest
 
 - Mettre en place les routes
 - afficher du contenu en fonction
-- afficher des graphiques
+- afficher des chiffres
 - prendre le csv d'électricity pour montrer un usage
 - mettre en place un input
 - Pour la co :
@@ -17,13 +19,13 @@ cf : ../client_mobile/filmquest
 - 1 btn : voir la production d'élec
 
 - Vue électricité :
-- graphique
+- prix actuel
 - btn vendre élec
 - btn vu production
 - encart pour vendre élec
 
 - Vue Production
-- graphique
+- production actuelle
 - btn vendre élec
 - btn vu production
 - encart pour vendre élec
