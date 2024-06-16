@@ -813,6 +813,36 @@ const mDeleteUser = (req, res) => {
   });
 };
 
+// !---------------------------------------------------------
+// *Elec prod
+const mElecProd = (req, res) => {
+  const sql =
+    "SELECT e.label_ener,pe.`qtx_production`,pe.`date_production`,u.label_unity " +
+    "FROM `product_energy` as pe, `unity` as u, `energy` as e " +
+    "WHERE `date_production`>'2024-06-10 12:00:00' " +
+    "AND `date_production`<'2024-06-10 12:59:59 '" +
+    "AND pe.id_unity=u.Id_Unity " +
+    "AND pe.Id_Energy=e.Id_Energy";
+  db.query(sql, (err, result) => {
+    if (err) console.log(err);
+    // console.log(res.json(result));
+    return res.json(result);
+  });
+};
+// TODO : Mettre ce qui suit et remplacer les zero par les valeurs choisit
+//  "INSERT INTO `product_energy` (`Id_Product`, `Id_Energy`, `qtx_production`, `date_production`, `id_unity`, `ener_price`) VALUES ('35', '1', '0', '2024-06-16 18:58:06.000000', '7', '0');"
+const mElecMoove = (req, res) => {
+  const sql =
+    "INSERT INTO  `product_energy` (`Id_Product`, `Id_Energy`, `qtx_production`, `date_production`, `id_unity`, `ener_price`) VALUES(?)";
+  //   console.log(values);
+  db.query(sql, [values], (err, result) => {
+    console.log("values ", values);
+    console.log("res ", res);
+    if (err) return res.json("error");
+    return res.json(result);
+  });
+};
+
 module.exports = {
   melectricity,
   mgetelecbymonth,
@@ -846,4 +876,6 @@ module.exports = {
   mUpdateUser,
   mSeeSpecialities,
   mDeleteUser,
+  mElecProd,
+  mElecMoove,
 };

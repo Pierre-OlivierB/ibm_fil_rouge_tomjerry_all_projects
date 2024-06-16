@@ -80,6 +80,16 @@ const deleteUser = (req, res) => {
   // * Remplir ici
   webdataModel.mDeleteUser(req, res);
 };
+// !-------------------------------------
+// *Electricity prod
+const elecProd = (req, res) => {
+  // * Remplir ici
+  webdataModel.mElecProd(req, res);
+};
+const elecMoove = (req, res) => {
+  // * Remplir ici
+  webdataModel.mElecMoove(req, res);
+};
 
 module.exports = {
   electricity,
@@ -114,4 +124,6 @@ module.exports = {
   updateUser,
   seeSpecialities,
   deleteUser,
+  elecProd,
+  elecMoove,
 };

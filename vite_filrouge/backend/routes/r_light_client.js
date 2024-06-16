@@ -61,5 +61,9 @@ router.put("/update/:id_user", webController.updateUser);
 router.delete("/delete/:id_user", webController.deleteUser);
 
 // router.get("/logout", userController.logoutUser);
+// !-----------------------------------------------------------
+// *Electricity
+router.get("/elecprod", webController.elecProd);
+router.get("/elecmoove", webController.elecMoove);
 
 module.exports = router;

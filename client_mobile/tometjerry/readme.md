@@ -6,6 +6,8 @@ TODO :
 - desinstal npm i react-native-charts-wrapper & react-native-scrollable-tab-view
   cf : ../client_mobile/filmquest
 
+- Story telling : il est 12:05:00 on est le 10 juin
+
 - Mettre en place les routes
 - afficher du contenu en fonction
 - afficher des chiffres

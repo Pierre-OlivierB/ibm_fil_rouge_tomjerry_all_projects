@@ -55,8 +55,8 @@ function Home({ navigation }) {
         <ImageViewer placeholderImageSource={PlaceholderImage} />
       </View>
       <View style={styles.footerContainer}>
-        <Button theme="primary" label="Choose" navigation={navigation} />
-        <Button label="use" navigation={navigation} />
+        <Button theme="primary" label="Electricity" navigation={navigation} />
+        <Button label="Production" navigation={navigation} />
       </View>
     </View>
   );
