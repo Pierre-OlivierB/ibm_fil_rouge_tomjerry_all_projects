@@ -86,8 +86,20 @@ const elecProd = (req, res) => {
   // * Remplir ici
   webdataModel.mElecProd(req, res);
 };
+
+//  "INSERT INTO `product_energy` (`Id_Product`, `Id_Energy`, `qtx_production`, `date_production`, `id_unity`, `ener_price`) VALUES ('35', '1', '0', '2024-06-16 18:58:06.000000', '7', '0');"
 const elecMoove = (req, res) => {
   // * Remplir ici
+  const dateNow = new Date();
+  const dateNowLocal = dateNow.toLocaleString("en-ZA");
+  values = [
+    "35",
+    "1",
+    `${req.body.qtx_elec}`,
+    dateNowLocal,
+    "7",
+    `${req.body.price}`,
+  ];
   webdataModel.mElecMoove(req, res);
 };
 

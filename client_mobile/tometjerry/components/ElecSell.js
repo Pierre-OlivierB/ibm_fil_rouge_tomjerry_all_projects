@@ -8,12 +8,38 @@ import {
   Button,
   ToastAndroid,
 } from "react-native";
+import DataElec from "../assets/data_elec.json";
 
 const ElecSell = ({ navigation }) => {
+  // *récup prix du moment
+  const elecsell = DataElec.elec[0].data;
+  const [data, setData] = React.useState("");
+
+  // *récup qttx à vendre
   const [text, onChangeText] = React.useState("");
-  const showToast = () => {
-    navigation.navigate("Home");
-    ToastAndroid.show(`Vous avez vendu : ${text}`, ToastAndroid.LONG);
+
+  // *post qtt et prix associé
+  const showToast = async () => {
+    try {
+      const toSell = await fetch("http://10.0.0.2:3001/elecmoove", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          qtx_elec: -text,
+          price: elecsell,
+        }),
+      });
+      // const toSell = await fetch("http://192.168.1.111:3001/elecprod");
+      const json = await toSell.json();
+      navigation.navigate("Home");
+      ToastAndroid.show(`Vous avez vendu : ${text}`, ToastAndroid.LONG);
+      return setData(json[0]);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

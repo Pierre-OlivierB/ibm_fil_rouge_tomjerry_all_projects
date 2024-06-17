@@ -10,6 +10,21 @@ const db = mysql.createConnection({
   multipleStatements: true,
 });
 
+const test = (role) => {
+  switch (role) {
+    case "rh":
+      console.log("rh");
+      break;
+    case "admin":
+      console.log("admin");
+      break;
+
+    default:
+      console.log(role);
+      break;
+  }
+};
+
 // *electricity
 const melectricity = (req, res) => {
   const sql =
@@ -732,6 +747,11 @@ const mconnexion = (req, res) => {
             expiresIn: "1d",
           });
           res.cookie("tokenco", token);
+
+          // !---------------------------------------------------------
+          test(role);
+          // !---------------------------------------------------------
+
           // console.log(role);
           return res.json({ Status: "Ok", token: token, role: role });
         } else return res.json({ Status: "erreur mot de pass" });
@@ -834,10 +854,10 @@ const mElecProd = (req, res) => {
 const mElecMoove = (req, res) => {
   const sql =
     "INSERT INTO  `product_energy` (`Id_Product`, `Id_Energy`, `qtx_production`, `date_production`, `id_unity`, `ener_price`) VALUES(?)";
-  //   console.log(values);
+  // console.log(values);
   db.query(sql, [values], (err, result) => {
-    console.log("values ", values);
-    console.log("res ", res);
+    // console.log("values ", values);
+    // console.log("res ", res);
     if (err) return res.json("error");
     return res.json(result);
   });

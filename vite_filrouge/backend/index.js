@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const lightRoutes = require("./routes/r_light_client.js");
 // * allow request from
 
+// TODO :
+// origin: ["http://localhost:5173", "exp://192.168.48.206:8081"],
 app.use(
   cors({
     origin: "http://localhost:5173",

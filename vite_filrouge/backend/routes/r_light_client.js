@@ -49,7 +49,6 @@ router.get("/fields", webController.fields);
 router.post("/login", webController.connexion);
 router.get("/select", webController.seeAllUsers);
 
-// TODO : ----------------
 router.post("/createaccount", webController.createUser);
 router.post("/selectone", webController.seeUser);
 router.get("/roles", webController.seeRoles);
@@ -64,6 +63,7 @@ router.delete("/delete/:id_user", webController.deleteUser);
 // !-----------------------------------------------------------
 // *Electricity
 router.get("/elecprod", webController.elecProd);
-router.get("/elecmoove", webController.elecMoove);
+// TODO :
+router.post("/elecmoove", webController.elecMoove);
 
 module.exports = router;

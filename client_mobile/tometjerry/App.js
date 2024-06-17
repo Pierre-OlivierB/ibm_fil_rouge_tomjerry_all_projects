@@ -9,6 +9,7 @@ import Production from "./views/Production";
 import Electricity from "./views/Electricity";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
+import Auth from "./views/Auth";
 // import backImage from "./assets/49408_arrow_back_icon.png";
 
 export default function App() {
@@ -31,6 +32,16 @@ export default function App() {
             }}
           >
             <Stack.Navigator>
+              <Stack.Screen
+                name="Auth"
+                component={Auth}
+                options={{
+                  title: "Connexion",
+                  headerStyle: {
+                    backgroundColor: "#63b2f2",
+                  },
+                }}
+              />
               <Stack.Screen
                 name="Home"
                 component={Home}
