@@ -92,7 +92,7 @@ class View1(QtWidgets.QMainWindow):
         link = "http://localhost:3001/login"
         # print(new_data)
         r=requests.post(link,json=new_data)
-        # print(r.text)
+        print(r.text)
         r =r.json()   
         return r
 

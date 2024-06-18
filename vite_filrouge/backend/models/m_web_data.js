@@ -2,25 +2,38 @@ const mysql = require("mysql");
 const bcrypt = require("bcrypt");
 const Jwt = require("jsonwebtoken");
 
-const db = mysql.createConnection({
+var user = "invited";
+var password = "";
+
+var db = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "",
+  user: user,
+  password: password,
   database: "fil_rouge_farm3",
   multipleStatements: true,
 });
+db.connect(function (err) {
+  if (err) throw err;
+});
 
-const test = (role) => {
-  switch (role) {
+const test = (corole) => {
+  switch (corole) {
     case "rh":
-      console.log("rh");
+      user = "rh";
+      password = "";
+      // console.log("rh" + corole);
       break;
     case "admin":
-      console.log("admin");
+      // console.log("admin");
+      user = "admin";
+      password = "";
       break;
 
     default:
-      console.log(role);
+      // console.log(corole);
+      // console.log("test");
+      user = "invited";
+      password = "";
       break;
   }
 };
@@ -729,6 +742,9 @@ const mfields = (req, res) => {
 // !--------------------------------------------
 
 const mconnexion = (req, res) => {
+  // test("test");
+  console.log(user);
+  console.log("testco :" + req.body.email);
   const sql =
     "SELECT Id_employee, First_name,Last_name,N_SS,CHECK_ROLE(Id_Role) as role,pwrd,email FROM employee WHERE email=?";
   db.query(sql, [req.body.email], (err, result) => {
@@ -739,7 +755,7 @@ const mconnexion = (req, res) => {
         // console.log(result[0].pwrd);
         if (err) return res.json({ Error: "Erreur connection" });
         if (respo) {
-          // console.log("res : ", result);
+          console.log("res : ", result);
           const name = result[0].name;
           const role = result[0].role;
           // console.log(role);
@@ -750,6 +766,14 @@ const mconnexion = (req, res) => {
 
           // !---------------------------------------------------------
           test(role);
+          // console.log("test ", role);
+          db = mysql.createConnection({
+            host: "localhost",
+            user: user,
+            password: password,
+            database: "fil_rouge_farm3",
+            multipleStatements: true,
+          });
           // !---------------------------------------------------------
 
           // console.log(role);
@@ -762,11 +786,12 @@ const mconnexion = (req, res) => {
   });
 };
 const mSeeAllUser = (req, res) => {
+  console.log(user);
   const sql =
     "SELECT Id_employee, First_name,Last_name,N_SS,CHECK_ROLE(Id_Role) as role,pwrd,email FROM employee";
 
   db.query(sql, (err, data) => {
-    if (err) return router.json("error");
+    if (err) return res.json("error");
     return res.json(data);
   });
 };
@@ -774,12 +799,13 @@ const mSeeAllUser = (req, res) => {
 // TODO :
 
 const mCreateUser = (req, res) => {
+  console.log("create", user);
   const sql =
     "INSERT INTO employee(First_name,Last_name,N_SS,Id_Role,email,pwrd) VALUES(?)";
   //   console.log(values);
   db.query(sql, [values], (err, result) => {
     console.log("values ", values);
-    console.log("res ", res);
+    console.log("res ", err);
     if (err) return res.json("error");
     return res.json(result);
   });
@@ -804,6 +830,9 @@ const mSeeRoles = (req, res) => {
   });
 };
 const mUpdateUser = (req, res) => {
+  console.log("update", user);
+  console.log(req.body);
+
   const sql =
     "UPDATE employee SET Id_Role=?,Id_Speciality=? WHERE Id_Employee=?";
   const data = [req.body.Id_Role, req.body.Id_Speciality];
@@ -811,6 +840,7 @@ const mUpdateUser = (req, res) => {
   const idUser = req.params.id_user;
   db.query(sql, [...data, idUser], (err, result) => {
     if (err) return res.json("error");
+    // res.status(status).json(obj)
     return res.json(result);
   });
 };
@@ -825,6 +855,8 @@ const mSeeSpecialities = (req, res) => {
 };
 
 const mDeleteUser = (req, res) => {
+  console.log("delete", user);
+
   const sql = "DELETE FROM employee WHERE Id_Employee=?";
   const idUser = req.params.id_user;
   db.query(sql, [idUser], (err, result) => {

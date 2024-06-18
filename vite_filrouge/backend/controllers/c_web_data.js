@@ -34,6 +34,7 @@ const fields = webdataModel.mfields;
 
 // *connexion
 const connexion = (req, res) => {
+  // console.log("test : ", req);
   // * Remplir ici
   webdataModel.mconnexion(req, res);
 };
