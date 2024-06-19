@@ -1,12 +1,27 @@
-launch :
+# Project : Mobile
+
+## launch :
+
 npx expo start
 
-TODO :
+## FontAwesome
+
+https://icons.expo.fyi/Index
+
+## TODO :
 
 - desinstal npm i react-native-charts-wrapper & react-native-scrollable-tab-view
   cf : ../client_mobile/filmquest
 
 - Story telling : il est 12:05:00 on est le 10 juin
+
+- pour vendre élec :
+  table product energy en négatif
+  y ajouter le prix (product_energy)
+
+---
+
+## DONE :
 
 - Mettre en place les routes
 - afficher du contenu en fonction
@@ -31,10 +46,6 @@ TODO :
 - btn vendre élec
 - btn vu production
 - encart pour vendre élec
-
-- pour vendre élec :
-  table product energy en négatif
-  y ajouter le prix (product_energy)
 
 Si j'ai le temps :
 Connexion.

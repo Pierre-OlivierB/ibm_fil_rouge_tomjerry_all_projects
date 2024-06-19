@@ -14,7 +14,6 @@ function Production({ navigation }) {
       flex: 1,
     },
     footerContainer: {
-      width: "100%",
       flex: 1,
       alignItems: "end",
       alignItems: "center",
@@ -33,6 +32,9 @@ function Production({ navigation }) {
       color: "#fa7e70",
       textAlign: "center",
       fontWeight: "bold",
+    },
+    textProd: {
+      flex: 2,
     },
   });
   // !------------------------------------
@@ -68,7 +70,7 @@ function Production({ navigation }) {
       <View style={styles.textContainer}>
         <Text style={styles.data}>{data} KWH</Text>
       </View>
-      <View style={styles.textContainer}>
+      <View style={styles.textProd}>
         <ElecSell navigation={navigation} />
       </View>
 

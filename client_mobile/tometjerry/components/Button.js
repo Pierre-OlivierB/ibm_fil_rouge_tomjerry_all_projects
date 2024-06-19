@@ -1,5 +1,6 @@
 import { StyleSheet, View, Pressable, Text, ToastAndroid } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome6 } from "@expo/vector-icons";
 
 export default function Button({ label, theme, navigation }) {
   function ShowToast() {
@@ -18,14 +19,12 @@ export default function Button({ label, theme, navigation }) {
           onPress={() => navigation.navigate("Electricity")}
         >
           <FontAwesome
-            name="picture-o"
-            size={18}
-            color="#25292e"
+            name="bolt"
+            size={25}
+            color="#fff"
             style={styles.buttonIcon}
           />
-          <Text style={[styles.buttonLabel, { color: "#25292e" }]}>
-            {label}
-          </Text>
+          <Text style={[styles.buttonLabel, { color: "#fff" }]}>{label}</Text>
         </Pressable>
       </View>
     );
@@ -36,6 +35,12 @@ export default function Button({ label, theme, navigation }) {
         style={styles.button}
         onPress={() => navigation.navigate("Production")}
       >
+        <FontAwesome6
+          name="tractor"
+          size={25}
+          color="#fff"
+          style={styles.buttonIcon}
+        />
         <Text style={styles.buttonLabel}>{label}</Text>
       </Pressable>
     </View>

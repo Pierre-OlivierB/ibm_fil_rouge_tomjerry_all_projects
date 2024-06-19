@@ -21,7 +21,7 @@ const ElecSell = ({ navigation }) => {
   // *post qtt et prix associé
   const showToast = async () => {
     try {
-      const toSell = await fetch("http://10.0.0.2:3001/elecmoove", {
+      const toSell = await fetch("http://192.168.1.111:3001/elecmoove", {
         method: "POST",
         headers: {
           Accept: "application/json",
