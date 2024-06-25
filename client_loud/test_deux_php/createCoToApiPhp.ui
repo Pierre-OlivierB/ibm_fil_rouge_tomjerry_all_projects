@@ -76,26 +76,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textPass">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>440</y>
-      <width>261</width>
-      <height>41</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textPassConfirm">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>520</y>
-      <width>261</width>
-      <height>41</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="errorZone">
     <property name="geometry">
      <rect>
@@ -209,6 +189,26 @@
      <rect>
       <x>160</x>
       <y>280</y>
+      <width>261</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="textPass">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>440</y>
+      <width>261</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="textPassConfirm">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>520</y>
       <width>261</width>
       <height>41</height>
      </rect>

@@ -742,23 +742,16 @@ const mfields = (req, res) => {
 // !--------------------------------------------
 
 const mconnexion = (req, res) => {
-  // test("test");
-  console.log(user);
-  console.log("testco :" + req.body.email);
   const sql =
     "SELECT Id_employee, First_name,Last_name,N_SS,CHECK_ROLE(Id_Role) as role,pwrd,email FROM employee WHERE email=?";
   db.query(sql, [req.body.email], (err, result) => {
     if (err) return res.json({ Error: "Un problème est survenu" });
-    // console.log(req.body);
     if (result.length > 0) {
       bcrypt.compare(req.body.pass.toString(), result[0].pwrd, (err, respo) => {
-        // console.log(result[0].pwrd);
         if (err) return res.json({ Error: "Erreur connection" });
         if (respo) {
-          console.log("res : ", result);
           const name = result[0].name;
           const role = result[0].role;
-          // console.log(role);
           const token = Jwt.sign({ name: name, role: role }, "jwt-secret-key", {
             expiresIn: "1d",
           });
@@ -766,7 +759,6 @@ const mconnexion = (req, res) => {
 
           // !---------------------------------------------------------
           test(role);
-          // console.log("test ", role);
           db = mysql.createConnection({
             host: "localhost",
             user: user,
@@ -775,8 +767,6 @@ const mconnexion = (req, res) => {
             multipleStatements: true,
           });
           // !---------------------------------------------------------
-
-          // console.log(role);
           return res.json({ Status: "Ok", token: token, role: role });
         } else return res.json({ Status: "erreur mot de pass" });
       });

@@ -9,6 +9,7 @@ import {
   ToastAndroid,
 } from "react-native";
 import DataElec from "../assets/data_elec.json";
+import isASell from "./controllers/isASell";
 
 const ElecSell = ({ navigation }) => {
   // *récup prix du moment
@@ -20,6 +21,13 @@ const ElecSell = ({ navigation }) => {
 
   // *post qtt et prix associé
   const showToast = async () => {
+    if (!isASell(text)) {
+      return ToastAndroid.show(
+        `La valeur renseignée n'est pas du bon format`,
+        ToastAndroid.LONG
+      );
+    }
+
     try {
       const toSell = await fetch("http://192.168.1.111:3001/elecmoove", {
         method: "POST",
@@ -32,10 +40,12 @@ const ElecSell = ({ navigation }) => {
           price: elecsell,
         }),
       });
-      // const toSell = await fetch("http://192.168.1.111:3001/elecprod");
       const json = await toSell.json();
       navigation.navigate("Home");
-      ToastAndroid.show(`Vous avez vendu : ${text}`, ToastAndroid.LONG);
+      ToastAndroid.show(
+        `Vous avez vendu : ${text}KWH pour ${elecsell}€/KWH `,
+        ToastAndroid.LONG
+      );
       return setData(json[0]);
     } catch (error) {
       console.error(error);
@@ -53,6 +63,7 @@ const ElecSell = ({ navigation }) => {
           onChangeText={onChangeText}
           value={text}
           placeholder="00.00"
+          maxLength={5}
           keyboardType="numeric"
         />
       </SafeAreaView>

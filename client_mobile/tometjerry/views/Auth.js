@@ -26,9 +26,7 @@ function Auth({ navigation }) {
           pass: pass,
         }),
       });
-      // const toSell = await fetch("http://192.168.1.111:3001/elecprod");
       const json = await toSell.json();
-      //   console.log(json);
       if (json.Status === "Ok") {
         ToastAndroid.show(`Bonjour admin`, ToastAndroid.LONG);
         return navigation.navigate("Home");

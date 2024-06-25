@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import Button from "../components/Button";
 import ElecSell from "../components/ElecSell";
 
@@ -40,13 +40,9 @@ function Production({ navigation }) {
   // !------------------------------------
   // *get elec prod
   const getData = async () => {
-    // console.log("test");
     try {
-      const response = await fetch("http://10.0.0.2:3001/elecprod");
+      const response = await fetch("http://192.168.1.111:3001/elecprod");
       const json = await response.json();
-      // console.log("test");
-      // console.log(json);
-      // console.log("test ", json[0]);
       return setData(json[0].qtx_production);
     } catch (error) {
       console.error(error);
@@ -57,16 +53,12 @@ function Production({ navigation }) {
   }, []);
 
   const [data, setData] = useState("");
-  //   console.log(route);
 
   return (
     <View style={styles.textContainer}>
       <View style={styles.bgLinear}>
         <Text style={styles.textPart}>Production Tom et Jerry</Text>
       </View>
-      {/* !--------------------- */}
-      {/* !--------Mettre les chiffres ici actuel------- */}
-      {/* !--------------------- */}
       <View style={styles.textContainer}>
         <Text style={styles.data}>{data} KWH</Text>
       </View>

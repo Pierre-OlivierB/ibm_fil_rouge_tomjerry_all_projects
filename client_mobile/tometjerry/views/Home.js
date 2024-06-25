@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import ImageViewer from "../components/ImageViewer";
 import Button from "../components/Button";
 
@@ -44,8 +44,6 @@ function Home({ navigation }) {
       resizeMode: "stretch",
     },
   });
-  // const data = route;
-  // console.log(data);
   return (
     <View style={styles.textContainer}>
       <View style={styles.textContainer}>

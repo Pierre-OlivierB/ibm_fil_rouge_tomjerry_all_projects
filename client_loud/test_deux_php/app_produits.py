@@ -1,6 +1,6 @@
 import sys
 from PyQt5 import uic, QtWidgets
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem,QLineEdit
 from PyQt5.QtCore import QDate, Qt,QTime
 import requests
 import os
@@ -23,6 +23,17 @@ class View1(QtWidgets.QMainWindow):
         # * creat and connect two btn
         # self.createAccountBtn.clicked.connect(self.openVue2)
         self.connexionBtn.clicked.connect(self.launch)
+        # *-----------------------
+        # !-----------------------TO DEL
+        # # Connect the textChanged signal to a custom slot
+        # self.textPass.textChanged.connect(self.mask_password)
+
+        # # Store the actual password in a separate attribute
+        # self.actual_password = ""
+        # *--------------------------
+        # !----------------------change to lie edit
+        self.textPass.setEchoMode(QLineEdit.Password)
+
 
     # * open views
     def openVue2(self):
@@ -35,15 +46,26 @@ class View1(QtWidgets.QMainWindow):
         Vue3 = View3(self)
         Vue3.show()
 
+
+    # def launchView(self):
+    #     if roleAccount == 'admin':
+    #         self.openVue2()
+    #     elif roleAccount =='rh':
+    #         self.openVue3()
+    #     else:
+    #         self.errorZone.setText("vous n'avez pas les droits")
     def launchView(self):
-        global account
-        # print("roleAccount : ",roleAccount)
+    # Check if the account role is 'admin'
         if roleAccount == 'admin':
+        # Open the admin view
             self.openVue2()
-        if roleAccount =='rh':
+    # Check if the account role is 'rh'
+        elif roleAccount == 'rh':
+        # Open the HR view
             self.openVue3()
-        if roleAccount != 'admin' or roleAccount!= 'rh':
-            # print("ici")
+    # For any other role
+        else:
+        # Display an error message
             self.errorZone.setText("vous n'avez pas les droits")
     
     # * front after connexion test
@@ -82,7 +104,7 @@ class View1(QtWidgets.QMainWindow):
     # * send info 
     def addToArray(self):
         email =self.textMail.toPlainText()
-        password = self.textPass.toPlainText()
+        password = self.textPass.text()
         save = {"email":str(email),"pass":str(password)}
         req = self.add_to_bdd(save)
         return self.exist(req)
@@ -96,6 +118,25 @@ class View1(QtWidgets.QMainWindow):
         r =r.json()   
         return r
 
+    # def mask_password(self):
+    #     cursor_position = self.textPass.textCursor().position()
+    #     # Get the new character entered
+    #     new_text = self.textPass.toPlainText()
+    #     # Only update the password if a new character was added
+    #     if len(new_text) > len(self.actual_password):
+    #         self.actual_password += new_text[-1]
+    #     else:
+    #         self.actual_password = self.actual_password[:len(new_text)]
+
+    #     # Replace the QTextEdit content with asterisks
+    #     self.textPass.blockSignals(True)  # Temporarily block signals to avoid recursion
+    #     self.textPass.setPlainText('*' * len(self.actual_password))
+    #     self.textPass.blockSignals(False)  # Re-enable signals
+
+    #     # Restore the cursor position
+    #     cursor = self.textPass.textCursor()
+    #     cursor.setPosition(cursor_position)
+    #     self.textPass.setTextCursor(cursor)
     # *creation view
 class View2(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -103,6 +144,8 @@ class View2(QtWidgets.QMainWindow):
         uic.loadUi(os.path.join(os.path.dirname(__file__), 'createCoToApiPhp.ui'), self)
         self.signupBtn.clicked.connect(self.addToArray)
         
+        self.textPass.setEchoMode(QLineEdit.Password)
+        self.textPassConfirm.setEchoMode(QLineEdit.Password)
         # TODO : à décommente :
         self.addRolesList()
         self.comboBoxRoles.clear()
@@ -132,8 +175,8 @@ class View2(QtWidgets.QMainWindow):
         nss=self.textNss.toPlainText()
         role=self.comboBoxRoles.currentText()
         email =self.textMail.toPlainText()
-        password = self.textPass.toPlainText()
-        passConfirm=self.textPassConfirm.toPlainText()
+        password = self.textPass.text()
+        passConfirm=self.textPassConfirm.text()
         match role:
             case 'rh':
                 Id_Role=2

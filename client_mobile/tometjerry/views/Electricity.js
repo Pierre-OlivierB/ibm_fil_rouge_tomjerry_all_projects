@@ -38,10 +38,7 @@ function Electricity({ navigation }) {
       flex: 2,
     },
   });
-  //   console.log(route);
-  // !------------------------------------
   // *get elec vente
-  // console.log(DataElec);
   const elecsell = DataElec.elec[0].data;
 
   return (
@@ -49,9 +46,6 @@ function Electricity({ navigation }) {
       <View style={styles.bgLinear}>
         <Text style={styles.textPart}>Marché électricité - France</Text>
       </View>
-      {/* !--------------------- */}
-      {/* !--------Mettre les chiffres ici actuel------- */}
-      {/* !--------------------- */}
       <View style={styles.textContainer}>
         <Text style={styles.data}>{elecsell} KWH</Text>
       </View>

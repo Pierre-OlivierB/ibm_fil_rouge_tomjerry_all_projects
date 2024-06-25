@@ -43,8 +43,13 @@ const seeAllUsers = webdataModel.mSeeAllUser;
 // TODO : ------------------------
 const cost = 10;
 
+const testMail = (a) => {
+  return /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(
+    a
+  );
+};
+
 const createUser = (req, res) => {
-  // console.log("test : ", req);
   bcrypt.hash(req.body.pass.toString(), cost, (err, hash) => {
     if (err) return res.json(console.log("Erreur de hashage"));
     values = [
@@ -55,7 +60,9 @@ const createUser = (req, res) => {
       req.body.email,
       hash,
     ];
-    webdataModel.mCreateUser(req, res);
+    if (testMail(req.body.email)) {
+      webdataModel.mCreateUser(req, res);
+    }
   });
 };
 const seeUser = (req, res) => {
@@ -88,15 +95,23 @@ const elecProd = (req, res) => {
   webdataModel.mElecProd(req, res);
 };
 
-//  "INSERT INTO `product_energy` (`Id_Product`, `Id_Energy`, `qtx_production`, `date_production`, `id_unity`, `ener_price`) VALUES ('35', '1', '0', '2024-06-16 18:58:06.000000', '7', '0');"
 const elecMoove = (req, res) => {
+  if (!/(?:\d+,?\d*){1,5}/.test(req.body.qtx_elec)) {
+    return res.json("error");
+  }
+  try {
+    var quantityElec = parseFloat(req.body.qtx_elec).toFixed(2);
+  } catch (error) {
+    return res.json("error");
+  }
+
   // * Remplir ici
   const dateNow = new Date();
   const dateNowLocal = dateNow.toLocaleString("en-ZA");
   values = [
     "35",
     "1",
-    `${req.body.qtx_elec}`,
+    `${quantityElec}`,
     dateNowLocal,
     "7",
     `${req.body.price}`,

@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import { StyleSheet, View, ImageBackground } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 const ImageBg = require("./assets/farm.png");
@@ -10,12 +10,9 @@ import Electricity from "./views/Electricity";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import Auth from "./views/Auth";
-// import backImage from "./assets/49408_arrow_back_icon.png";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
-
-  // TODO :https://stackoverflow.com/questions/54599305/how-to-set-background-image-with-react-native-and-react-navigation
 
   return (
     <View style={styles.container}>
