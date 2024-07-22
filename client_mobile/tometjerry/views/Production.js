@@ -43,7 +43,6 @@ function Production({ navigation }) {
     try {
       const response = await fetch("http://192.168.1.111:3001/elecprod");
       const json = await response.json();
-      // console.log(json);
       return setData(json[0].qtx_production);
     } catch (error) {
       console.error(error);
