@@ -34,7 +34,6 @@ const fields = webdataModel.mfields;
 
 // *connexion
 const connexion = (req, res) => {
-  // console.log("test : ", req);
   // * Remplir ici
   webdataModel.mconnexion(req, res);
 };
@@ -66,12 +65,10 @@ const createUser = (req, res) => {
   });
 };
 const seeUser = (req, res) => {
-  // console.log("see");
   // * Remplir ici
   webdataModel.mSeeUser(req, res);
 };
 const seeRoles = (req, res) => {
-  // console.log("see");
   // * Remplir ici
   webdataModel.mSeeRoles(req, res);
 };
@@ -80,7 +77,6 @@ const updateUser = (req, res) => {
   webdataModel.mUpdateUser(req, res);
 };
 const seeSpecialities = (req, res) => {
-  // console.log("see");
   // * Remplir ici
   webdataModel.mSeeSpecialities(req, res);
 };
@@ -97,12 +93,10 @@ const elecProd = (req, res) => {
 
 const elecMoove = (req, res) => {
   if (!/(?:\d+,?\d*){1,5}/.test(req.body.qtx_elec)) {
-    // console.log("pas bon");
     return res.json("error");
   }
   try {
     var quantityElec = parseFloat(req.body.qtx_elec).toFixed(2);
-    // console.log("oui");
   } catch (error) {
     return res.json("error");
   }

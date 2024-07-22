@@ -1,9 +1,12 @@
 const mysql = require("mysql");
 const bcrypt = require("bcrypt");
 const Jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
 
-var user = "invited";
-var password = "";
+dotenv.config();
+
+var user = process.env.MODEL_INVITED_USER;
+var password = process.env.MODEL_INVITED_MDP;
 
 var db = mysql.createConnection({
   host: "localhost",
@@ -19,21 +22,18 @@ db.connect(function (err) {
 const test = (corole) => {
   switch (corole) {
     case "rh":
-      user = "rh";
-      password = "";
-      // console.log("rh" + corole);
+      user = process.env.MODEL_RH_USER;
+      password = process.env.MODEL_RH_MDP;
+
       break;
     case "admin":
-      // console.log("admin");
-      user = "admin";
-      password = "";
+      user = process.env.MODEL_ADMIN_USER;
+      password = process.env.MODEL_ADMIN_MDP;
       break;
 
     default:
-      // console.log(corole);
-      // console.log("test");
-      user = "invited";
-      password = "";
+      user = process.env.MODEL_INVITED_USER;
+      password = process.env.MODEL_INVITED_MDP;
       break;
   }
 };
@@ -797,13 +797,10 @@ const mSeeAllUser = (req, res) => {
 // TODO :
 
 const mCreateUser = (req, res) => {
-  console.log("create", user);
   const sql =
     "INSERT INTO employee(First_name,Last_name,N_SS,Id_Role,email,pwrd) VALUES(?)";
-  //   console.log(values);
+
   db.query(sql, [values], (err, result) => {
-    console.log("values ", values);
-    console.log("res ", err);
     if (err) return res.json("error");
     return res.json(result);
   });
@@ -812,7 +809,7 @@ const mSeeUser = (req, res) => {
   const sql =
     "Select Id_employee, First_name,Last_name,N_SS,CHECK_ROLE(Id_Role) as role,pwrd,email,Id_Speciality from employee WHERE email=?";
   const data = [req.body.email];
-  // console.log("test", data);
+
   db.query(sql, data, (err, result) => {
     if (err) return res.json("error");
     return res.json(result);
@@ -821,31 +818,28 @@ const mSeeUser = (req, res) => {
 const mSeeRoles = (req, res) => {
   const sql = "SELECT CHECK_ROLE(Id_Role) as role from role GROUP BY role;";
   const data = [req.body.email];
-  // console.log("test", data);
+
   db.query(sql, data, (err, result) => {
     if (err) return res.json("error");
     return res.json(result);
   });
 };
 const mUpdateUser = (req, res) => {
-  console.log("update", user);
-  console.log(req.body);
-
   const sql =
     "UPDATE employee SET Id_Role=?,Id_Speciality=? WHERE Id_Employee=?";
   const data = [req.body.Id_Role, req.body.Id_Speciality];
-  // console.log(req.params);
+
   const idUser = req.params.id_user;
   db.query(sql, [...data, idUser], (err, result) => {
     if (err) return res.json("error");
-    // res.status(status).json(obj)
+
     return res.json(result);
   });
 };
 
 const mSeeSpecialities = (req, res) => {
   const sql = "SELECT * FROM `speciality` ORDER BY Id_Speciality ASC";
-  // console.log("test", data);
+
   db.query(sql, (err, result) => {
     if (err) return res.json("error");
     return res.json(result);
@@ -874,21 +868,17 @@ const mElecProd = (req, res) => {
     "GROUP BY e.label_ener;";
   db.query(sql, (err, result) => {
     if (err) console.log(err);
-    // console.log(res.json(result));
+
     return res.json(result);
   });
 };
-// TODO : Mettre ce qui suit et remplacer les zero par les valeurs choisit
+
 //  "INSERT INTO `product_energy` (`Id_Product`, `Id_Energy`, `qtx_production`, `date_production`, `id_unity`, `ener_price`) VALUES ('35', '1', '0', '2024-06-16 18:58:06.000000', '7', '0');"
 const mElecMoove = (req, res) => {
-  // console.log("on est passé");
   const sql =
     "INSERT INTO  `product_energy` (`Id_Product`, `Id_Energy`, `qtx_production`, `date_production`, `id_unity`, `ener_price`) VALUES(?)";
-  // console.log(values);
+
   db.query(sql, [values], (err, result) => {
-    // console.log("values ", values);
-    // console.log("res ", res);
-    // console.log(result);
     if (err) return res.json("error");
     return res.json(result);
   });
