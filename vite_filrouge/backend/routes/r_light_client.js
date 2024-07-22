@@ -1,9 +1,12 @@
+// *import module express
 const express = require("express");
+// *endpoint initialisation with new instance
 const router = express.Router();
 
 // *redirect in controllers
 const webController = require("../controllers/c_web_data");
 
+// *first page
 router.get("/", (req, res) => {
   return res.json({ Status: "Bienvenue sur l'api" });
 });

@@ -41,6 +41,7 @@ const ElecSell = ({ navigation }) => {
         }),
       });
       const json = await toSell.json();
+      console.log(json);
       navigation.navigate("Home");
       ToastAndroid.show(
         `Vous avez vendu : ${text}KWH pour ${elecsell}€/KWH `,
@@ -68,11 +69,7 @@ const ElecSell = ({ navigation }) => {
         />
       </SafeAreaView>
       <View>
-        <Button
-          title="Valider"
-          color="hsl(0, 0%, 30%)"
-          onPress={() => showToast()}
-        />
+        <Button title="Valider" color="hsl(0, 0%, 30%)" onPress={showToast} />
       </View>
     </View>
   );

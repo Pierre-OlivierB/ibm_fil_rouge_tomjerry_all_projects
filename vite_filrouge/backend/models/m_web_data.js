@@ -740,21 +740,29 @@ const mfields = (req, res) => {
 // * ----------Ajout pour connexion-------------
 // *--------------------------------------------
 // !--------------------------------------------
-
+// *Function for user gestion
 const mconnexion = (req, res) => {
+  //* request prepared
   const sql =
     "SELECT Id_employee, First_name,Last_name,N_SS,CHECK_ROLE(Id_Role) as role,pwrd,email FROM employee WHERE email=?";
+  // *execution of the request
   db.query(sql, [req.body.email], (err, result) => {
+    // *error management
     if (err) return res.json({ Error: "Un problème est survenu" });
+    // *if some result then
     if (result.length > 0) {
+      // *compare user mdp and mdp return by database
       bcrypt.compare(req.body.pass.toString(), result[0].pwrd, (err, respo) => {
+        // *error management
         if (err) return res.json({ Error: "Erreur connection" });
+        // *if mdps equals
         if (respo) {
           const name = result[0].name;
           const role = result[0].role;
           const token = Jwt.sign({ name: name, role: role }, "jwt-secret-key", {
             expiresIn: "1d",
           });
+          // *return token with cookie format
           res.cookie("tokenco", token);
 
           // !---------------------------------------------------------
@@ -859,12 +867,11 @@ const mDeleteUser = (req, res) => {
 // *Elec prod
 const mElecProd = (req, res) => {
   const sql =
-    "SELECT e.label_ener,pe.`qtx_production`,pe.`date_production`,u.label_unity " +
+    "SELECT e.label_ener,SUM(pe.`qtx_production`) as qtx_production,u.label_unity " +
     "FROM `product_energy` as pe, `unity` as u, `energy` as e " +
-    "WHERE `date_production`>'2024-06-10 12:00:00' " +
-    "AND `date_production`<'2024-06-10 12:59:59 '" +
-    "AND pe.id_unity=u.Id_Unity " +
-    "AND pe.Id_Energy=e.Id_Energy";
+    "WHERE pe.id_unity=u.Id_Unity " +
+    "AND pe.Id_Energy=e.Id_Energy " +
+    "GROUP BY e.label_ener;";
   db.query(sql, (err, result) => {
     if (err) console.log(err);
     // console.log(res.json(result));
@@ -874,12 +881,14 @@ const mElecProd = (req, res) => {
 // TODO : Mettre ce qui suit et remplacer les zero par les valeurs choisit
 //  "INSERT INTO `product_energy` (`Id_Product`, `Id_Energy`, `qtx_production`, `date_production`, `id_unity`, `ener_price`) VALUES ('35', '1', '0', '2024-06-16 18:58:06.000000', '7', '0');"
 const mElecMoove = (req, res) => {
+  // console.log("on est passé");
   const sql =
     "INSERT INTO  `product_energy` (`Id_Product`, `Id_Energy`, `qtx_production`, `date_production`, `id_unity`, `ener_price`) VALUES(?)";
   // console.log(values);
   db.query(sql, [values], (err, result) => {
     // console.log("values ", values);
     // console.log("res ", res);
+    // console.log(result);
     if (err) return res.json("error");
     return res.json(result);
   });

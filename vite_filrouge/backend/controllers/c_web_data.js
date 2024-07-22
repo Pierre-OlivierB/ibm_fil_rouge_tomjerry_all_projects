@@ -97,10 +97,12 @@ const elecProd = (req, res) => {
 
 const elecMoove = (req, res) => {
   if (!/(?:\d+,?\d*){1,5}/.test(req.body.qtx_elec)) {
+    // console.log("pas bon");
     return res.json("error");
   }
   try {
     var quantityElec = parseFloat(req.body.qtx_elec).toFixed(2);
+    // console.log("oui");
   } catch (error) {
     return res.json("error");
   }

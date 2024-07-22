@@ -220,8 +220,11 @@ class View3(QtWidgets.QMainWindow):
         global userToUpdate
         userToUpdate = {"email":self.updateAccountTxt.text()}
         # print("account",account)
-        test = self.userExist(userToUpdate)
+        
         # print(test)
+        if account==userToUpdate['email']:
+            return self.errorZone.setText('On ne peut pas se modifier soit même.')
+        test = self.userExist(userToUpdate)
         if(len(test)!=0):
             userToUpdate = test
             self.hide()
@@ -258,7 +261,7 @@ class View3(QtWidgets.QMainWindow):
         # *get data on format [[1,"xxx",...],...]
         # print(results)
         for row in results :
-            product = dict(name = row['First_name'],mail=row['email'])
+            product = dict(name = row['First_name'],mail=row['email'],role=row['role'])
             array.append(product)
         product_list = {"data":array}
         return product_list        
@@ -337,6 +340,8 @@ class View4(QtWidgets.QMainWindow):
         global userToUpdate,specialities
         id_target= userToUpdate[0]['Id_employee']
         match role:
+            case 'admin':
+                Id_Role=1
             case 'rh':
                 Id_Role=2
             case 'agriculteur':
@@ -382,16 +387,16 @@ class View4(QtWidgets.QMainWindow):
     
     def messageDeleteEmployeeEntities(self, id_emp):
         self.errorZone.setText(f'Etes vous sûr de vouloir le supprimer ? {id_emp}')
-        # TODO : mettre en place une vérification de click pour savoir s'il est sûr de la suppression.
     
     def deleteEmployeeEntities(self, id_emp):
-        # print("delete ",id_emp)
-        link = "http://localhost:3001/delete/{}".format(id_emp)
-        r = requests.delete(link)
-        # print(r.json())
-        r = r.json()
-        print(r)
-        self.openVue3()
+        try:
+            id_target =int(id_emp)
+            link = "http://localhost:3001/delete/{}".format(id_target)
+            r = requests.delete(link)
+            r = r.json()
+            self.openVue3()
+        except:
+            self.errorZone.setText('Probléme de connexion.')
 
         
     
