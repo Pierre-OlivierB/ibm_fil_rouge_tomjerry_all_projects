@@ -24,11 +24,11 @@ Site vitrine pour un agriculteur orienté production :
 - gérer le contenu en ajax
 - au choix garder le titre en cours au cas où la personne ne change pas de target (creales, pomme de terre)
 - réécrire les liens
-- commenter le code
 
 ### DOING :
 
 - refactor
+- commenter le code
 
 ### Done :
 
